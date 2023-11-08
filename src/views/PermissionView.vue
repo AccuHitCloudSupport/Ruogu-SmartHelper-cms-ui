@@ -11,7 +11,7 @@
         <div class="col-3 d-flex">
           <button class="btn btn-primary me-2 py-2 px-3" type="submit"><img class="me-1"
               src="../../src/assets/img/ri_search.svg"> 搜尋</button>
-          <button class="btn btn-blue py-2 px-3" type="button" v-on:click="openAddUserModal()"><img class="me-1"
+          <button  v-if="userInfo.permissions.includes('manage_users')" class="btn btn-blue py-2 px-3" type="button" v-on:click="openAddUserModal()"><img class="me-1"
               src="../../src/assets/img/user-add.svg"> 新增</button>
         </div>
       </div>
@@ -26,7 +26,7 @@
           <th width="20%">姓名</th>
           <th width="15%">角色</th>
           <th>帳號</th>
-          <th width="15%" v-if="userInfo.roleId === '652e9b0e593905d4db69ee72'">操作</th>
+          <th width="15%" v-if="userInfo.permissions.includes('manage_users')">操作</th>
         </tr>
       </thead>
 
@@ -37,7 +37,7 @@
             <td>{{ item.name }}</td>
             <td>{{ item.role }}</td>
             <td>{{ item.email }}</td>
-            <td class="d-flex" v-if="userInfo.roleId === '652e9b0e593905d4db69ee72'">
+            <td class="d-flex" v-if="userInfo.permissions.includes('manage_users')">
               <button class="btn btn-blue me-2" type="button" v-on:click="openModifyUserModal(item)">
                 <img src="../../src/assets/img/edit.svg">
               </button>
@@ -170,9 +170,9 @@
               </ErrorMessage>
             </div>
             <div class="mb-3">
-              <label class="form-label required">修改密碼</label>
+              <label class="form-label">修改密碼</label>
               <VField class="form-control" v-model="modifyPassword" name="modifyPassword" type="password"
-                autocomplete="new-password" rules="required" />
+                autocomplete="new-password"/>
               <ErrorMessage name="modifyPassword">
                 <p class="error">請填寫密碼</p>
               </ErrorMessage>
@@ -245,7 +245,7 @@ export default {
     const searchForm = (value) => {
       keyWord.value = value;
       currentPage.value = 1;
-      search();
+      search(value);
     };
     const addUserForm = (value) => {
       addUser(value)
@@ -333,8 +333,16 @@ export default {
       const loader = loading.show({
         color: "#F2994a",
       });
+      let params = { 
+        "name": data.name, 
+        "email": data.email,
+        "roleId": data.modifyRole 
+      };
+      if (!data.modifyPassword === null){
+        params.password = data.modifyPassword;
+      }
       permissionApiService
-        .modifyUserInfo(data.modifyId, { "name": data.name, "email": data.email, "password": data.modifyPassword, "roleId": data.modifyRole })
+        .modifyUserInfo(data.modifyId, params)
         .then((response) => {
           if (response.status !== undefined && response.status === 200) {
             closeModifyUserModal();

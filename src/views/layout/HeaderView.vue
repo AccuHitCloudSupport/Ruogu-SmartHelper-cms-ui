@@ -62,6 +62,21 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" data-bs-backdrop="static" ref="modifyPasswordMessageModelRef" id="modifyPasswordMessageModel"
+        tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered tips">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p class="text-center my-3">修改密碼成功！<br/>按下確認後請重新登入</p>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-secondary px-4" v-on:click="closeModifyPasswordMessageModel()">
+                            確定
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 <script>
 import loginApiService from '@/api/login/loginApiService';
@@ -77,6 +92,8 @@ export default {
     },
     setup() {
         const modifyPasswordModelRef = ref(null);
+        const modifyPasswordMessageModelRef = ref(null);
+
         const newPassword = ref(null);
         const newPasswordAgain = ref(null);
         const userName = JSON.parse(sessionStorage.getItem('UserInfo')).name;
@@ -84,9 +101,22 @@ export default {
             // options
         });
         let modifyPasswordModel;
+        let modifyPasswordMessageModel;
         onMounted(() => {
             modifyPasswordModel = new Modal(modifyPasswordModelRef.value);
+            modifyPasswordMessageModel = new Modal(modifyPasswordMessageModelRef.value);
         })
+
+        function openModifyPasswordMessageModel() {
+            modifyPasswordMessageModel.show();
+        }
+        function closeModifyPasswordMessageModel() {
+            sessionStorage.removeItem("Token");
+            sessionStorage.removeItem("UserInfo");
+            router.push('/login')
+            modifyPasswordMessageModel.hide();
+        }
+
         function openModifyPasswordModel() {
             modifyPasswordModel.show();
         }
@@ -95,7 +125,7 @@ export default {
         }
         const modifyPasswordForm = (value) => {
             if (value.newPassword === value.newPasswordAgain) {
-                changePassword()
+                changePassword(value.newPassword)
             } else {
                 Notify.error('兩個密碼輸入不一致請重新確認')
             }
@@ -111,10 +141,12 @@ export default {
             })
                 .then((data) => {
                     if (data.status === 200) {
-                        Notify.success("修改密碼成功請重新登入")
-                        loader.hide()
-                        sessionStorage.removeItem("Token");
-                        router.push('/login')
+                        loader.hide();
+                        closeModifyPasswordModel();
+                        openModifyPasswordMessageModel();
+                    } else {
+                        loader.hide();
+                        Notify.error(data.message)
                     }
 
                 })
@@ -136,6 +168,7 @@ export default {
                     if (response.status !== undefined && response.status === 200) {
                         loader.hide()
                         sessionStorage.removeItem("Token");
+                        sessionStorage.removeItem("UserInfo");
                         router.push('/login')
                     } else {
                         loader.hide();
@@ -147,7 +180,7 @@ export default {
                     Notify.error(e.message)
                 });
         }
-        return { userName, newPassword, newPasswordAgain, modifyPasswordForm, modifyPasswordModel, modifyPasswordModelRef, loading, logout, openModifyPasswordModel, closeModifyPasswordModel }
+        return { userName, newPassword, newPasswordAgain, modifyPasswordForm, modifyPasswordModel, modifyPasswordMessageModel, modifyPasswordModelRef, modifyPasswordMessageModelRef, loading, logout, openModifyPasswordModel, closeModifyPasswordModel, openModifyPasswordMessageModel, closeModifyPasswordMessageModel }
     }
 }
 </script>

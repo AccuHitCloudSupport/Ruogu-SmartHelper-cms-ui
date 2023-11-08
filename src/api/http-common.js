@@ -3,9 +3,8 @@ import axios from "axios";
 import Notify from "../utility/notify.js";
 
 axios.defaults.timeout = 5000;
-// // axios.defaults.baseURL = process.env.API_ROOT; // 域名
-//axios.defaults.baseURL = process.env.VUE_APP_API_ROOT;
-axios.defaults.baseURL = "https://testing-smarthelper-cms-api.azurewebsites.net/";
+axios.defaults.baseURL = process.env.VUE_APP_API_ROOT;
+// axios.defaults.baseURL = "https://shawn-cms-test-api.azurewebsites.net";
 // // http request 欄截
 axios.interceptors.request.use(
   (config) => {
@@ -35,11 +34,14 @@ axios.interceptors.response.use(
   (err) => {
     if (err && err.response) {
       let fileNmae = "";
-
       switch (err.response.status) {
+        case 400:
+          Notify.error(err.response.data.message);
+          break;
         case 401:
           Notify.error("沒有權限請重新登入");
           sessionStorage.removeItem("Token");
+          sessionStorage.removeItem("UserInfo");
           router.push("/login");
           // this.subject.next(123)
           break;
@@ -64,6 +66,7 @@ axios.interceptors.response.use(
     } else {
       Notify.error("連接到服務器失敗");
       sessionStorage.removeItem("Token");
+      sessionStorage.removeItem("UserInfo");
       router.push("/login");
     }
     return Promise.resolve(err);

@@ -53,7 +53,7 @@
   <div class="card mt-3 p-4">
     <div class="d-flex justify-content-between mb-2">
       <div>
-        <button class="btn btn-primary me-2 tool-tip" v-if="userInfo.roleId === '652e9b0e593905d4db69ee72'"
+        <button class="btn btn-primary me-2 tool-tip" v-if="userInfo.permissions.includes('manage_users')"
           v-on:click="openReviewModal()" type="button" data-tooltip-title="審核" data-tooltip-position="bottom">
           <img src="../../src/assets/img/design_file.svg">
         </button>
@@ -87,7 +87,7 @@
           <tr>
             <td>{{ ((currentPage - 1) * pageSize) + index + 1 }}</td>
             <td class="text-center"><input
-                v-if="((userInfo.name === item.userName && userInfo.roleId !== '652e9b0e593905d4db69ee72') || userInfo.roleId === '652e9b0e593905d4db69ee72')"
+                v-if="((userInfo.name === item.userName && !userInfo.permissions.includes('manage_users')) || userInfo.permissions.includes('manage_users'))"
                 class="form-check-input" type="checkbox" v-on:click="selectData(item)" :checked="item.check" /></td>
             <td><a :href=item.url><img class="me-1" src="../../src/assets/img/download-alt.svg"> {{ item.docName }}</a>
             </td>
@@ -320,7 +320,7 @@ export default {
       let fileName = "";
       if (acceptFiles.length <= 20) {
         acceptFiles.forEach((element, index) => {
-          if (element.type === 'application/pdf' || element.type === 'application/msword' || element.type === ' application/vnd.openxmlformats-officedocument.wordprocessingml.document' || element.type === 'application/vnd.oasis.opendocument.text') {
+          if (element.type === 'application/pdf' || element.type === 'application/msword' || element.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || element.type === 'application/vnd.oasis.opendocument.text') {
             nowSize = element.size + nowSize;
             state.files.push(element)
             if (index + 1 === acceptFiles.length) {
@@ -510,7 +510,8 @@ export default {
     }
 
     function allSelect() {
-      if (JSON.parse(sessionStorage.getItem('UserInfo')).roleId === '652e9b0e593905d4db69ee72') {
+      
+      if (JSON.parse(sessionStorage.getItem('UserInfo')).permissions.includes('manage_users')) {
         items.formData.forEach((data) => {
           data.check = true;
         })
