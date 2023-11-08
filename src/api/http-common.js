@@ -4,7 +4,8 @@ import Notify from "../utility/notify.js";
 
 axios.defaults.timeout = 5000;
 // // axios.defaults.baseURL = process.env.API_ROOT; // 域名
-axios.defaults.baseURL = process.env.VUE_APP_API_ROOT;
+//axios.defaults.baseURL = process.env.VUE_APP_API_ROOT;
+axios.defaults.baseURL = "https://testing-smarthelper-cms-api.azurewebsites.net/";
 // // http request 欄截
 axios.interceptors.request.use(
   (config) => {
