@@ -17,8 +17,10 @@
         <button @click="toggleChat" class="close-chat">
           <img class="me-1 node-icon" src="../../assets/img/close.png" style="width: 15px; height: 15px;">
         </button>
+        <!-- 新增的展開按鈕 -->
+        <button @click="expandChat" class="expand-chat-btn">{{ showChat ? '收起' : '展開' }}</button>
       </div>
-      <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
+      <iframe :src="chatSrc" :style="{ height: showChat ? 'calc(100% - 55px)' : '0' }" class="orange-background"></iframe>
     </div>
   </div>
 </template>
@@ -34,11 +36,14 @@ export default {
   computed: {
     chatSrc() {
       // 使用環境變數
-      return `https://webchat.botframework.com/embed/testing-smarthelper-chatbot-bot?s=${process.env.VUE_APP_BOT_TOKEN}`;
+      return `https://webchat.botframework.com/embed/fastfood-smarthelper-bot-bot?s=${process.env.VUE_APP_BOT_TOKEN}`;
     }
   },
   methods: {
     toggleChat() {
+      this.showChat = !this.showChat;
+    },
+    expandChat() {
       this.showChat = !this.showChat;
     }
   }
@@ -84,6 +89,7 @@ export default {
   z-index: 999;
   padding: 0;
   border-radius: 10px; /* 添加圓角，與表頭相同 */
+  overflow: hidden; /* 隱藏超出的部分 */
 }
 
 /* 表頭樣式 */
@@ -107,6 +113,19 @@ export default {
   background-color: transparent;
   border: none;
   z-index: 1000; /* 將 z-index 設定為更高的值，確保在最上層 */
+  color: white;
+}
+
+/* 新增的按鈕樣式 */
+.expand-chat-btn {
+  position: absolute;
+  top: 0;
+  right: 30px; /* 調整右邊距離 */
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  z-index: 1000;
   color: white;
 }
 </style>
