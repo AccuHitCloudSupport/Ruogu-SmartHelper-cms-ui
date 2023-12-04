@@ -17,9 +17,10 @@
         <button @click="toggleChat" class="close-chat">
           <img class="me-1 node-icon" src="../../assets/img/close.png" style="width: 15px; height: 15px;">
         </button>
-        <button @click="toggleDialogSize" class="toggle-dialog-button">{{ chatExpanded ? '收起' : '展開' }}</button>
+        <!-- 新增展開按鈕 -->
+        <button v-if="!chatExpanded" @click="toggleDialogSize" class="toggle-dialog-button">+</button>
       </div>
-      <iframe :src="chatSrc" :style="{ height: chatExpanded ? 'calc(100% - 45px)' : '100%' }" class="orange-background"></iframe>
+      <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
   </div>
 </template>
@@ -30,7 +31,7 @@ export default {
   data() {
     return {
       showChat: false,
-      chatExpanded: true,
+      chatExpanded: true
     };
   },
   computed: {
@@ -45,7 +46,7 @@ export default {
     },
     toggleDialogSize() {
       this.chatExpanded = !this.chatExpanded;
-    },
+    }
   }
 }
 </script>
@@ -89,7 +90,6 @@ export default {
   z-index: 999;
   padding: 0;
   border-radius: 10px; /* 添加圓角，與表頭相同 */
-  overflow: hidden; /* 隱藏超出的部分 */
 }
 
 /* 表頭樣式 */
@@ -116,11 +116,11 @@ export default {
   color: white;
 }
 
-/* 展開/收起按鈕 */
+/* 開關按鈕 */
 .toggle-dialog-button {
   position: absolute;
   top: 0;
-  right: 70px;
+  right: 25px;
   padding: 5px 10px;
   cursor: pointer;
   background-color: transparent;
