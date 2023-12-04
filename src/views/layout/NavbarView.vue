@@ -7,12 +7,9 @@
     </ul>
     <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
       <div class="chat-header">
-        <button @click="toggleChat" class="close-chat">
-          <img class="me-1 node-icon" src="../../assets/img/close.png" style="width: 15px; height: 15px;">
-        </button>
         <!-- WebChat 字樣 -->
-        <img class="me-1 node-icon" src="../../assets/img/cha-bubbles-two-svgrepo-com.svg" style="width: 15px; height: 15px;">
-        <span>WebChat</span>
+        <img class="me-1 node-icon" src="../../assets/img/cha-bubbles-two-svgrepo-com.svg" style="width: 20px; height: 20px; filter: invert(100%);">
+        <span style="color: white; font-size: 16px;">WebChat</span>
         <!-- 展開/收起 按鈕 -->
         <button @click="toggleDialogSize" class="toggle-dialog-button">
           <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
@@ -29,20 +26,16 @@ export default {
   name: 'NavbarView',
   data() {
     return {
-      showChat: true,  // 將預設值改為 true
+      showChat: true,
       chatExpanded: true
     };
   },
   computed: {
     chatSrc() {
-      // 使用環境變數
       return `https://webchat.botframework.com/embed/testing-smarthelper-chatbot-bot?s=${process.env.VUE_APP_BOT_TOKEN}`;
     }
   },
   methods: {
-    toggleChat() {
-      // 刪除 toggleChat 方法的內容，防止手動關閉聊天框
-    },
     toggleDialogSize() {
       this.chatExpanded = !this.chatExpanded;
     }
