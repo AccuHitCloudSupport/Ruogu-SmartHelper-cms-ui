@@ -8,10 +8,10 @@
     <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
       <div class="chat-header">
         <!-- WebChat 字樣 -->
-        <img class="me-1 node-icon" src="../../assets/img/chat.png" style="width: 30px; height: 30px; filter: brightness(0);">
+        <img class="me-1 node-icon" src="../../assets/img/chat.png" style="width: 30px; height: 30px; filter: brightness(0) saturate(100%);">
         <!-- 展開/收起 按鈕 -->
         <button @click="toggleDialogSize" class="toggle-dialog-button">
-          <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(0%);">
+          <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
           <img v-else class="me-1 node-icon" src="../../assets/img/up.png" style="width: 15px; height: 15px; filter: invert(100%);">
         </button>
       </div>
