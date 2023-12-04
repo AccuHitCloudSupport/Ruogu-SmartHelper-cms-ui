@@ -128,9 +128,10 @@ export default {
   z-index: 1000;
   color: white;
   font-size: 15px; /* 新增這行，設定字體大小 */
-  line-height: 15px; /* 新增這行，設定行高為字體大小 */
+  line-height: 1; /* 新增這行，設定行高為1，以防止垂直方向的間距 */
   display: flex; /* 新增這行，使內容垂直置中 */
   align-items: center; /* 新增這行，使內容垂直置中 */
+  justify-content: center; /* 新增這行，使內容水平置中 */
 }
 </style>
 </style>
