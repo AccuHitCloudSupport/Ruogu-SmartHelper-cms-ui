@@ -2,18 +2,8 @@
   <div class="navbar-vertical navbar-expand">
     <ul class="py-4 px-3">
       <!-- 其他項目 -->
-      <li class="nav-item">
-        <router-link to="/permission" class="nav-link" href="#">
-          <img class="me-1 node-icon" src="../../assets/img/shield.svg">
-          權限管理
-        </router-link>
-      </li>
-      <li class="nav-item">
-        <router-link to="/dataMangent" class="nav-link" href="#">
-          <img class="me-1 node-icon" src="../../assets/img/gridicons.svg">
-          資料處理
-        </router-link>
-      </li>
+      <li class="nav-item"><router-link to="/permission" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/shield.svg"> 權限管理</router-link></li>
+      <li class="nav-item"><router-link to="/dataMangent" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/gridicons.svg"> 資料處理</router-link></li>
       <!-- 打開聊天按鈕 -->
       <li class="nav-item">
         <button @click="toggleChat" :class="{ 'chat-toggle-btn-active': showChat }" class="nav-link">
@@ -28,11 +18,9 @@
           <img class="me-1 node-icon" src="../../assets/img/close.png" style="width: 15px; height: 15px;">
         </button>
         <!-- 展開/收起 按鈕 -->
-        <button @click="toggleDialogSize" class="toggle-dialog-button" :aria-expanded="chatExpanded.toString()">
-          {{ chatExpanded ? '收起' : '展開' }}
-        </button>
+        <button @click="toggleDialogSize" class="toggle-dialog-button">{{ chatExpanded ? '-' : '+' }}</button>
       </div>
-      <iframe :src="chatSrc" style="min-width: 400px; width: 100%; min-height: 500px;" class="orange-background"></iframe>
+      <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
   </div>
 </template>
@@ -139,11 +127,5 @@ export default {
   border: none;
   z-index: 1000;
   color: white;
-  font-size: 15px; /* 設定字體大小 */
-  line-height: 1; /* 設定行高為1，以防止垂直方向的間距 */
-  display: flex; /* 使內容垂直置中 */
-  align-items: center; /* 使內容垂直置中 */
-  justify-content: center; /* 使內容水平置中 */
 }
-</style>
 </style>
