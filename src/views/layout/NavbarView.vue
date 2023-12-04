@@ -5,10 +5,10 @@
       <li class="nav-item"><router-link to="/permission" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/shield.svg"> 權限管理</router-link></li>
       <li class="nav-item"><router-link to="/dataMangent" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/gridicons.svg"> 資料處理</router-link></li>
     </ul>
-    <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
+    <div class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
       <div class="chat-header">
         <!-- WebChat 字樣 -->
-        <img class="me-1 node-icon" v-if="!floatingChat" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);" @click="toggleFloatingChat">
+        <img class="me-1 node-icon" v-if="!floatingChat" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);" @click="toggleChat">
         <!-- 展開/收起 按鈕 -->
         <button v-if="!floatingChat" @click="toggleDialogSize" class="toggle-dialog-button">
           <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
@@ -18,7 +18,7 @@
       <iframe v-if="!floatingChat" :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
     <!-- 懸浮的 icon -->
-    <img v-if="floatingChat" class="me-1 node-icon floating-chat" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);" @click="toggleChat">
+    <img v-if="floatingChat" class="me-1 node-icon floating-chat" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);" @click="toggleDialogSize">
   </div>
 </template>
 
@@ -27,9 +27,9 @@ export default {
   name: 'NavbarView',
   data() {
     return {
-      showChat: true,
       chatExpanded: true,
-      floatingChat: false  // 新增懸浮 chat 的狀態
+      floatingChat: true,
+      showChat: false
     };
   },
   computed: {
@@ -37,19 +37,12 @@ export default {
       return `https://webchat.botframework.com/embed/testing-smarthelper-chatbot-bot?s=${process.env.VUE_APP_BOT_TOKEN}`;
     }
   },
-  mounted() {
-    // 初始狀態下顯示懸浮 icon
-    this.floatingChat = true;
-  },
   methods: {
     toggleDialogSize() {
       this.chatExpanded = !this.chatExpanded;
     },
     toggleChat() {
       this.showChat = !this.showChat;
-    },
-    toggleFloatingChat() {
-      this.floatingChat = !this.floatingChat;
     }
   }
 }
@@ -130,8 +123,8 @@ export default {
 
 .floating-chat {
   position: fixed;
-  bottom: 10px;  /* 偏下方的位置 */
-  left: 10px;    /* 最左邊的位置 */
+  bottom: 10px;
+  left: 10px;
   cursor: pointer;
 }
   
