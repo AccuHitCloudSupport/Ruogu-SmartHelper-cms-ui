@@ -97,7 +97,7 @@ export default {
 
 /* 表頭樣式 */
 .chat-header {
-  background-color: #FF9224; /* 橘色背景 */
+  background-color: #0080FF; /* 橘色背景 */
   opacity: 1; /* 透明度 100% */
   height: 45px; /* 調整表頭高度 */
   margin-bottom: 10px; /* 新增這行，給表頭留出一些空間 */
@@ -106,24 +106,11 @@ export default {
   position: relative; /* 相對定位，以便絕對定位的按鈕參照 */
 }
 
-/* 關閉按鈕的樣式 */
-.close-chat {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 5px 10px;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  z-index: 1000; /* 將 z-index 設定為更高的值，確保在最上層 */
-  color: white;
-}
-
 /* 開關按鈕 */
 .toggle-dialog-button {
   position: absolute;
   top: 0;
-  right: 25px;
+  right: 0px;
   padding: 5px 10px;
   cursor: pointer;
   background-color: transparent;
