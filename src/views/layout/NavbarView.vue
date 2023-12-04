@@ -11,7 +11,7 @@
         <img class="me-1 node-icon" src="../../assets/img/chat.png" style="width: 40px; height: 40px; filter: grayscale(100%);">
         <!-- 展開/收起 按鈕 -->
         <button @click="toggleDialogSize" class="toggle-dialog-button">
-          <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
+          <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(0%);">
           <img v-else class="me-1 node-icon" src="../../assets/img/up.png" style="width: 15px; height: 15px; filter: invert(100%);">
         </button>
       </div>
