@@ -8,8 +8,7 @@
     <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
       <div class="chat-header">
         <!-- WebChat 字樣 -->
-        <img class="me-1 node-icon" src="../../assets/img/cha-bubbles-two-svgrepo-com.svg" style="width: 15px; height: 15px;">
-        <span>WebChat</span>
+        <img class="me-1 node-icon" src="../../assets/img/commun.png" style="width: 25px; height: 25px; filter: invert(100%);">
         <!-- 展開/收起 按鈕 -->
         <button @click="toggleDialogSize" class="toggle-dialog-button">
           <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
@@ -26,20 +25,16 @@ export default {
   name: 'NavbarView',
   data() {
     return {
-      showChat: true,  // 將預設值改為 true
+      showChat: true,
       chatExpanded: true
     };
   },
   computed: {
     chatSrc() {
-      // 使用環境變數
       return `https://webchat.botframework.com/embed/testing-smarthelper-chatbot-bot?s=${process.env.VUE_APP_BOT_TOKEN}`;
     }
   },
   methods: {
-    toggleChat() {
-      // 刪除 toggleChat 方法的內容，防止手動關閉聊天框
-    },
     toggleDialogSize() {
       this.chatExpanded = !this.chatExpanded;
     }
@@ -94,13 +89,17 @@ export default {
 
 /* 表頭樣式 */
 .chat-header {
-  background-color: #0080FF; /* 藍色背景 */
-  opacity: 1; /* 透明度 100% */
-  height: 60px; /* 調整表頭高度 */
-  margin-bottom: 10px; /* 新增這行，給表頭留出一些空間 */
-  border-radius: 10px 10px 0 0; /* 添加圓角，使整個表頭上方兩邊為圓角 */
-  border-bottom: 5px solid #0080FF !important; /* 使用 !important 強制生效 */
-  position: relative; /* 相對定位，以便絕對定位的按鈕參照 */
+  background-color: #0080FF;
+  opacity: 1;
+  height: 60px;
+  margin-bottom: 10px;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 5px solid #0080FF !important;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
 }
 
 /* 開關按鈕 */
