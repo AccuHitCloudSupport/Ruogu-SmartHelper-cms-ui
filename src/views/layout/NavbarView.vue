@@ -18,7 +18,7 @@
           <img class="me-1 node-icon" src="../../assets/img/close.png" style="width: 15px; height: 15px;">
         </button>
         <!-- 新增的展開/縮小按鈕 -->
-        <button @click="toggleChatHeight" class="toggle-height-btn">{{ showChat ? '收起' : '展開' }}</button>
+        <button v-if="showChat" @click="toggleChatHeight" class="toggle-height-btn">{{ showChat ? '收起' : '展開' }}</button>
       </div>
       <iframe v-show="showChat" :src="chatSrc" style='min-width: 400px; width: 100%; height: 100%;' class="orange-background"></iframe>
     </div>
@@ -121,7 +121,7 @@ export default {
 .toggle-height-btn {
   position: absolute;
   top: 0;
-  right: 60px; /* 調整右邊距離 */
+  right: 120px; /* 調整右邊距離 */
   padding: 5px 10px;
   cursor: pointer;
   background-color: transparent;
