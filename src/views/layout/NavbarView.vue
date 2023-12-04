@@ -19,8 +19,10 @@
         </button>
         <!-- 新增的展開/縮小按鈕 -->
         <button @click="toggleChatHeight" class="toggle-height-btn">{{ showChat ? '收起' : '展開' }}</button>
+        <!-- 新增的鎖定對話框按鈕 -->
+        <button @click="lockChat" class="lock-chat-btn" :class="{ 'chat-toggle-btn-active': isLocked }">{{ isLocked ? '解鎖' : '鎖定' }}</button>
       </div>
-      <iframe :src="chatSrc" :style="{ height: chatHeight }" class="orange-background"></iframe>
+      <iframe :src="chatSrc" :style="{ height: chatHeight, overflow: isLocked ? 'hidden' : 'auto' }" class="orange-background"></iframe>
     </div>
   </div>
 </template>
@@ -32,6 +34,7 @@ export default {
     return {
       showChat: false,
       chatHeight: '500px', // 初始高度
+      isLocked: false,
     };
   },
   computed: {
@@ -46,6 +49,9 @@ export default {
     },
     toggleChatHeight() {
       this.chatHeight = this.showChat ? '45px' : '500px'; // 設定為表頭高度或初始高度
+    },
+    lockChat() {
+      this.isLocked = !this.isLocked;
     }
   }
 }
@@ -119,6 +125,19 @@ export default {
 
 /* 新增的按鈕樣式 */
 .toggle-height-btn {
+  position: absolute;
+  top: 0;
+  right: 60px; /* 調整右邊距離 */
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  z-index: 1000;
+  color: white;
+}
+
+/* 新增的按鈕樣式 */
+.lock-chat-btn {
   position: absolute;
   top: 0;
   right: 30px; /* 調整右邊距離 */
