@@ -128,6 +128,9 @@ export default {
   z-index: 1000;
   color: white;
   font-size: 15px; /* 新增這行，設定字體大小 */
+  line-height: 15px; /* 新增這行，設定行高為字體大小 */
+  display: flex; /* 新增這行，使內容垂直置中 */
+  align-items: center; /* 新增這行，使內容垂直置中 */
 }
 </style>
 </style>
