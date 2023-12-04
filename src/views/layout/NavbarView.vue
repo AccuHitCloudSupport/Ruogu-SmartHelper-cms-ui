@@ -4,19 +4,15 @@
       <!-- 其他項目 -->
       <li class="nav-item"><router-link to="/permission" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/shield.svg"> 權限管理</router-link></li>
       <li class="nav-item"><router-link to="/dataMangent" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/gridicons.svg"> 資料處理</router-link></li>
-      <!-- 打開聊天按鈕 -->
-      <li class="nav-item">
-        <button @click="toggleChat" :class="{ 'chat-toggle-btn-active': showChat }" class="nav-link">
-          <img class="me-1 node-icon" src="../../assets/img/cha-bubbles-two-svgrepo-com.svg" style="width: 15px; height: 15px;">
-          對話測試
-        </button>
-      </li>
     </ul>
     <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
       <div class="chat-header">
         <button @click="toggleChat" class="close-chat">
           <img class="me-1 node-icon" src="../../assets/img/close.png" style="width: 15px; height: 15px;">
         </button>
+        <!-- WebChat 字樣 -->
+        <img class="me-1 node-icon" src="../../assets/img/cha-bubbles-two-svgrepo-com.svg" style="width: 15px; height: 15px;">
+        <span>WebChat</span>
         <!-- 展開/收起 按鈕 -->
         <button @click="toggleDialogSize" class="toggle-dialog-button">
           <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
@@ -33,7 +29,7 @@ export default {
   name: 'NavbarView',
   data() {
     return {
-      showChat: false,
+      showChat: true,  // 將預設值改為 true
       chatExpanded: true
     };
   },
@@ -45,7 +41,7 @@ export default {
   },
   methods: {
     toggleChat() {
-      this.showChat = !this.showChat;
+      // 刪除 toggleChat 方法的內容，防止手動關閉聊天框
     },
     toggleDialogSize() {
       this.chatExpanded = !this.chatExpanded;
