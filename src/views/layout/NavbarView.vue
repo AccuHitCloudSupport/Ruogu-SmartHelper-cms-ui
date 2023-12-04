@@ -5,7 +5,7 @@
       <li class="nav-item"><router-link to="/permission" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/shield.svg"> 權限管理</router-link></li>
       <li class="nav-item"><router-link to="/dataMangent" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/gridicons.svg"> 資料處理</router-link></li>
     </ul>
-    <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
+    <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? '45px' : 'auto' }">
       <div class="chat-header">
         <!-- WebChat 字樣 -->
         <img class="me-1 node-icon" src="../../assets/img/cha-bubbles-two-svgrepo-com.svg" style="width: 20px; height: 20px; filter: invert(100%);">
@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       showChat: true,
-      chatExpanded: true
+      chatExpanded: false
     };
   },
   computed: {
@@ -76,23 +76,27 @@ export default {
 .chat-container {
   position: fixed;
   bottom: 0;
-  right: 0; /* 控制在最右下角 */
+  right: 0;
   border: 1px solid #ccc;
   background-color: #fff;
   z-index: 999;
   padding: 0;
-  border-radius: 10px; /* 添加圓角，與表頭相同 */
+  border-radius: 10px;
 }
 
 /* 表頭樣式 */
 .chat-header {
-  background-color: #FF9224; /* 橘色背景 */
-  opacity: 1; /* 透明度 100% */
-  height: 45px; /* 調整表頭高度 */
-  margin-bottom: 10px; /* 新增這行，給表頭留出一些空間 */
-  border-radius: 10px 10px 0 0; /* 添加圓角，使整個表頭上方兩邊為圓角 */
-  border-bottom: 5px solid #FF8000 !important; /* 使用 !important 強制生效 */
-  position: relative; /* 相對定位，以便絕對定位的按鈕參照 */
+  background-color: #FF9224;
+  opacity: 1;
+  height: 45px;
+  margin-bottom: 10px;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 5px solid #FF8000 !important;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 將子元素分散對齊，將展開/收起按鈕放在最右邊 */
+  padding: 0 10px;
 }
 
 /* 關閉按鈕的樣式 */
