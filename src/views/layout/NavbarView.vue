@@ -127,5 +127,6 @@ export default {
   border: none;
   z-index: 1000;
   color: white;
+  font-size: 15px; /* 將字體大小設為 15px */
 }
 </style>
