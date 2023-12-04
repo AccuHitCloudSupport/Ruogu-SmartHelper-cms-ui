@@ -7,9 +7,6 @@
     </ul>
     <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
       <div class="chat-header">
-        <button @click="toggleChat" class="close-chat">
-          <img class="me-1 node-icon" src="../../assets/img/close.png" style="width: 15px; height: 15px;">
-        </button>
         <!-- WebChat 字樣 -->
         <img class="me-1 node-icon" src="../../assets/img/cha-bubbles-two-svgrepo-com.svg" style="width: 15px; height: 15px;">
         <span>WebChat</span>
