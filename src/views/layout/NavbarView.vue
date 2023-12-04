@@ -17,10 +17,10 @@
         <button @click="toggleChat" class="close-chat">
           <img class="me-1 node-icon" src="../../assets/img/close.png" style="width: 15px; height: 15px;">
         </button>
-        <!-- 新增的展開按鈕 -->
-        <button @click="expandChat" class="expand-chat-btn">{{ showChat ? '收起' : '展開' }}</button>
+        <!-- 新增的展開/縮小按鈕 -->
+        <button @click="toggleChatHeight" class="toggle-height-btn">{{ showChat ? '收起' : '展開' }}</button>
       </div>
-      <iframe :src="chatSrc" :style="{ height: showChat ? 'calc(100% - 55px)' : '0' }" class="orange-background"></iframe>
+      <iframe :src="chatSrc" :style="{ height: chatHeight }" class="orange-background"></iframe>
     </div>
   </div>
 </template>
@@ -30,21 +30,22 @@ export default {
   name: 'NavbarView',
   data() {
     return {
-      showChat: false
+      showChat: false,
+      chatHeight: '500px', // 初始高度
     };
   },
   computed: {
     chatSrc() {
       // 使用環境變數
-      return `https://webchat.botframework.com/embed/fastfood-smarthelper-bot-bot?s=${process.env.VUE_APP_BOT_TOKEN}`;
+      return `https://webchat.botframework.com/embed/testing-smarthelper-chatbot-bot?s=${process.env.VUE_APP_BOT_TOKEN}`;
     }
   },
   methods: {
     toggleChat() {
       this.showChat = !this.showChat;
     },
-    expandChat() {
-      this.showChat = !this.showChat;
+    toggleChatHeight() {
+      this.chatHeight = this.showChat ? '45px' : '500px'; // 設定為表頭高度或初始高度
     }
   }
 }
@@ -117,7 +118,7 @@ export default {
 }
 
 /* 新增的按鈕樣式 */
-.expand-chat-btn {
+.toggle-height-btn {
   position: absolute;
   top: 0;
   right: 30px; /* 調整右邊距離 */
