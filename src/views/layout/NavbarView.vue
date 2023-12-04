@@ -12,13 +12,13 @@
         </button>
       </li>
     </ul>
-    <div v-if="showChat" class="chat-container">
+    <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
       <div class="chat-header">
         <button @click="toggleChat" class="close-chat">
           <img class="me-1 node-icon" src="../../assets/img/close.png" style="width: 15px; height: 15px;">
         </button>
-        <!-- 新增展開按鈕 -->
-        <button v-if="!chatExpanded" @click="toggleDialogSize" class="toggle-dialog-button">+</button>
+        <!-- 展開/收起 按鈕 -->
+        <button @click="toggleDialogSize" class="toggle-dialog-button">{{ chatExpanded ? '-' : '+' }}</button>
       </div>
       <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
