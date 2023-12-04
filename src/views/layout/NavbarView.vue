@@ -34,7 +34,7 @@ export default {
   computed: {
     chatSrc() {
       // 使用環境變數
-      return `https://webchat.botframework.com/embed/fastfood-smarthelper-bot-bot?s=${process.env.VUE_APP_BOT_TOKEN}`;
+      return `https://webchat.botframework.com/embed/testing-smarthelper-chatbot-bot?s=${process.env.VUE_APP_BOT_TOKEN}`;
     }
   },
   methods: {
