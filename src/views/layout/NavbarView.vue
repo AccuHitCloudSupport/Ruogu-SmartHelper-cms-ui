@@ -8,15 +8,17 @@
     <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
       <div class="chat-header">
         <!-- WebChat 字樣 -->
-        <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
+        <img class="me-1 node-icon" v-if="!floatingChat" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);" @click="toggleFloatingChat">
         <!-- 展開/收起 按鈕 -->
-        <button @click="toggleDialogSize" class="toggle-dialog-button">
+        <button v-if="!floatingChat" @click="toggleDialogSize" class="toggle-dialog-button">
           <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
           <img v-else class="me-1 node-icon" src="../../assets/img/up.png" style="width: 15px; height: 15px; filter: invert(100%);">
         </button>
       </div>
-      <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
+      <iframe v-if="!floatingChat" :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
+    <!-- 懸浮的 icon -->
+    <img v-if="floatingChat" class="me-1 node-icon floating-chat" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);" @click="toggleChat">
   </div>
 </template>
 
@@ -26,7 +28,8 @@ export default {
   data() {
     return {
       showChat: true,
-      chatExpanded: true
+      chatExpanded: true,
+      floatingChat: false  // 新增懸浮 chat 的狀態
     };
   },
   computed: {
@@ -34,9 +37,19 @@ export default {
       return `https://webchat.botframework.com/embed/testing-smarthelper-chatbot-bot?s=${process.env.VUE_APP_BOT_TOKEN}`;
     }
   },
+  mounted() {
+    // 初始狀態下顯示懸浮 icon
+    this.floatingChat = true;
+  },
   methods: {
     toggleDialogSize() {
       this.chatExpanded = !this.chatExpanded;
+    },
+    toggleChat() {
+      this.showChat = !this.showChat;
+    },
+    toggleFloatingChat() {
+      this.floatingChat = !this.floatingChat;
     }
   }
 }
@@ -114,4 +127,12 @@ export default {
   z-index: 1000;
   color: white;
 }
+
+.floating-chat {
+  position: fixed;
+  bottom: 10px;  /* 偏下方的位置 */
+  left: 10px;    /* 最左邊的位置 */
+  cursor: pointer;
+}
+  
 </style>
