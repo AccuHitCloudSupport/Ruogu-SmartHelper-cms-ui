@@ -12,15 +12,14 @@
         </button>
       </li>
     </ul>
-    <div v-if="showChat" class="chat-container" :style="{ height: chatHeight }">
+    <div v-if="showChat" class="chat-container">
       <div class="chat-header">
         <button @click="toggleChat" class="close-chat">
           <img class="me-1 node-icon" src="../../assets/img/close.png" style="width: 15px; height: 15px;">
         </button>
-        <!-- 新增的展開/縮小按鈕 -->
-        <button v-if="showChat" @click="toggleChatHeight" class="toggle-height-btn">{{ showChat ? '收起' : '展開' }}</button>
+        <button @click="toggleDialogSize" class="toggle-dialog-button">{{ chatExpanded ? '收起' : '展開' }}</button>
       </div>
-      <iframe v-show="showChat" :src="chatSrc" style='min-width: 400px; width: 100%; height: 100%;' class="orange-background"></iframe>
+      <iframe :src="chatSrc" :style="{ height: chatExpanded ? 'calc(100% - 45px)' : '100%' }" class="orange-background"></iframe>
     </div>
   </div>
 </template>
@@ -31,7 +30,7 @@ export default {
   data() {
     return {
       showChat: false,
-      chatHeight: '500px', // 初始高度
+      chatExpanded: true,
     };
   },
   computed: {
@@ -44,8 +43,8 @@ export default {
     toggleChat() {
       this.showChat = !this.showChat;
     },
-    toggleChatHeight() {
-      this.chatHeight = this.showChat ? '45px' : '500px'; // 設定為表頭高度或初始高度
+    toggleDialogSize() {
+      this.chatExpanded = !this.chatExpanded;
     },
   }
 }
@@ -117,11 +116,11 @@ export default {
   color: white;
 }
 
-/* 新增的按鈕樣式 */
-.toggle-height-btn {
+/* 展開/收起按鈕 */
+.toggle-dialog-button {
   position: absolute;
   top: 0;
-  right: 120px; /* 調整右邊距離 */
+  right: 70px;
   padding: 5px 10px;
   cursor: pointer;
   background-color: transparent;
