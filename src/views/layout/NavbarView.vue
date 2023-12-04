@@ -127,5 +127,7 @@ export default {
   border: none;
   z-index: 1000;
   color: white;
+  font-size: 15px; /* 新增這行，設定字體大小 */
 }
+</style>
 </style>
