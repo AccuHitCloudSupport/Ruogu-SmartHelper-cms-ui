@@ -1,17 +1,109 @@
 <template>
-    <div class="navbar-vertical navbar-expand">
-        <ul class="py-4 px-3">
-          <li class="nav-item"><router-link to="/permission" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/shield.svg"> 權限管理</router-link></li>
-          <li class="nav-item"><router-link to="/dataMangent" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/gridicons.svg"> 資料處理</router-link></li>
-        </ul>
-        
+  <div class="navbar-vertical navbar-expand">
+    <ul class="py-4 px-3">
+      <!-- 其他項目 -->
+      <li class="nav-item"><router-link to="/permission" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/shield.svg"> 權限管理</router-link></li>
+      <li class="nav-item"><router-link to="/dataMangent" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/gridicons.svg"> 資料處理</router-link></li>
+      <!-- 打開聊天按鈕 -->
+      <li class="nav-item">
+        <button @click="toggleChat" :class="{ 'chat-toggle-btn-active': showChat }" class="nav-link">
+          <img class="me-1 node-icon" src="../../assets/img/cha-bubbles-two-svgrepo-com.svg" style="width: 15px; height: 15px;">
+          對話測試
+        </button>
+      </li>
+    </ul>
+    <div v-if="showChat" class="chat-container">
+      <div class="chat-header">
+        <button @click="toggleChat" class="close-chat">
+          <img class="me-1 node-icon" src="../../assets/img/close.png" style="width: 15px; height: 15px;">
+        </button>
+      </div>
+      <iframe src='https://webchat.botframework.com/embed/fastfood-smarthelper-bot-bot?s=uQRabuK4Vqc.QWHsy66a2E7djYiOdXddutVimNbSaSDavZU9Pr2mh1s' style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
+  </div>
 </template>
+
 <script>
 export default {
   name: 'NavbarView',
-  props: {
-    msg: String
+  data() {
+    return {
+      showChat: false
+    };
+  },
+  methods: {
+    toggleChat() {
+      this.showChat = !this.showChat;
+    }
   }
 }
 </script>
+
+<style scoped>
+/* 共用樣式 */
+.nav-item {
+  /* 共用的樣式設定，可以根據需要調整 */
+}
+
+.nav-link {
+  /* 共用的樣式設定，可以根據需要調整 */
+}
+
+.node-icon {
+  margin-right: 1em;
+}
+
+/* 打開聊天按鈕的樣式 */
+.chat-toggle-btn {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
+.chat-toggle-btn-active {
+  background-color: #FFDCB9; /* 變色效果，可根據需求修改 */
+  color: #fff;
+  border: none;
+}
+
+/* 聊天視窗的樣式 */
+.chat-container {
+  position: fixed;
+  bottom: 0;
+  right: 0; /* 控制在最右下角 */
+  border: 1px solid #ccc;
+  background-color: #fff;
+  z-index: 999;
+  padding: 0;
+  border-radius: 10px; /* 添加圓角，與表頭相同 */
+}
+
+
+/* 表頭樣式 */
+.chat-header {
+  background-color: #FF9224; /* 橘色背景 */
+  opacity: 1; /* 透明度 100% */
+  height: 45px; /* 調整表頭高度 */
+  margin-bottom: 10px; /* 新增這行，給表頭留出一些空間 */
+  border-radius: 10px 10px 0 0; /* 添加圓角，使整個表頭上方兩邊為圓角 */
+  border-bottom: 5px solid #FF8000 !important; /* 使用 !important 強制生效 */
+  position: relative; /* 相對定位，以便絕對定位的按鈕參照 */
+}
+
+
+/* 關閉按鈕的樣式 */
+.close-chat {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  z-index: 1000; /* 將 z-index 設定為更高的值，確保在最上層 */
+  color: white;
+}
+</style>
+
