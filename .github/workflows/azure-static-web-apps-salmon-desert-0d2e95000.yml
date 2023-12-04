@@ -34,6 +34,7 @@ jobs:
           ###### End of Repository/Build Configurations ######
         env:
           VUE_APP_API_ROOT: "https://testing-smarthelper-cms-api.azurewebsites.net"
+          VUE_APP_BOT_TOKEN: "sWK2kD3lCac.2RP3g3nyD3JGHiyW5T-4gZRv6R0oTqdUmFHdfVZ3gdo"
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
