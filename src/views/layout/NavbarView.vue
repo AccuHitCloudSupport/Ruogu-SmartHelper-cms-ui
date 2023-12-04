@@ -17,8 +17,10 @@
         <button @click="toggleChat" class="close-chat">
           <img class="me-1 node-icon" src="../../assets/img/close.png" style="width: 15px; height: 15px;">
         </button>
+        <!-- 新增的展開按鈕 -->
+        <button @click="expandChat" class="expand-chat-btn">展開</button>
       </div>
-      <iframe src='https://webchat.botframework.com/embed/fastfood-smarthelper-bot-bot?s=uQRabuK4Vqc.QWHsy66a2E7djYiOdXddutVimNbSaSDavZU9Pr2mh1s' style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
+      <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
   </div>
 </template>
@@ -31,9 +33,19 @@ export default {
       showChat: false
     };
   },
+  computed: {
+    chatSrc() {
+      // 使用環境變數
+      return `https://webchat.botframework.com/embed/fastfood-smarthelper-bot-bot?s=${process.env.VUE_APP_BOT_TOKEN}`;
+    }
+  },
   methods: {
     toggleChat() {
       this.showChat = !this.showChat;
+    },
+    expandChat() {
+      // 在這裡添加展開對話視窗的邏輯
+      // 你可以修改 showChat 的值，或者進行其他相應的處理
     }
   }
 }
@@ -80,7 +92,6 @@ export default {
   border-radius: 10px; /* 添加圓角，與表頭相同 */
 }
 
-
 /* 表頭樣式 */
 .chat-header {
   background-color: #FF9224; /* 橘色背景 */
@@ -91,7 +102,6 @@ export default {
   border-bottom: 5px solid #FF8000 !important; /* 使用 !important 強制生效 */
   position: relative; /* 相對定位，以便絕對定位的按鈕參照 */
 }
-
 
 /* 關閉按鈕的樣式 */
 .close-chat {
@@ -105,5 +115,17 @@ export default {
   z-index: 1000; /* 將 z-index 設定為更高的值，確保在最上層 */
   color: white;
 }
-</style>
 
+/* 新增的按鈕樣式 */
+.expand-chat-btn {
+  position: absolute;
+  top: 0;
+  right: 30px; /* 調整右邊距離 */
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  z-index: 1000;
+  color: white;
+}
+</style>
