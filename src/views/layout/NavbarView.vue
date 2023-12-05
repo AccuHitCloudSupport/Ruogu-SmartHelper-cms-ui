@@ -116,14 +116,23 @@ export default {
   right: 0; /* 调整到最右边 */
 }
 
-  
-.toggle-dialog-button img {
-  width: 35px;
-  height: 35px;
-  filter: invert(100%);
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
+/* 调整展开时的样式 */
+.chat-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  z-index: 999;
+  padding: 0;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+}
+
+/* 调整 iframe 样式 */
+iframe {
+  width: 100%;
+  border: none;
 }
 </style>
 
