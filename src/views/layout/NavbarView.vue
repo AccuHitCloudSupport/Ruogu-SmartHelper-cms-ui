@@ -5,6 +5,11 @@
       <li class="nav-item"><router-link to="/permission" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/shield.svg"> 權限管理</router-link></li>
       <li class="nav-item"><router-link to="/dataMangent" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/gridicons.svg"> 資料處理</router-link></li>
     </ul>
+    <!-- 開關按鈕 -->
+    <button class="toggle-chat-button" @click="toggleChat">
+      <img v-if="!showChat" class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
+      <img v-else class="me-1 node-icon" src="../../assets/img/close-icon.png" style="width: 25px; height: 25px; filter: invert(100%);">
+    </button>
     <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
       <div class="chat-header">
         <!-- 展開/收起 按鈕 -->
@@ -15,11 +20,6 @@
       </div>
       <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
-    <!-- 懸浮的開關 -->
-    <button class="floating-toggle-button" @click="toggleChat">
-      <img v-if="!showChat" class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
-      <img v-else class="me-1 node-icon" src="../../assets/img/close-icon.png" style="width: 25px; height: 25px; filter: invert(100%);">
-    </button>
   </div>
 </template>
 
@@ -49,10 +49,6 @@ export default {
 </script>
 
 <style scoped>
-/* ... 略 ... */
-</style>
-
-<style scoped>
 /* 共用樣式 */
 .nav-item {
   /* 共用的樣式設定，可以根據需要調整 */
@@ -66,19 +62,22 @@ export default {
   margin-right: 1em;
 }
 
-/* 打開聊天按鈕的樣式 */
-.chat-toggle-btn {
+/* 開關按鈕樣式 */
+.toggle-chat-button {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
   cursor: pointer;
   background-color: transparent;
   border: none;
   display: flex;
   align-items: center;
+  padding: 0;
+  z-index: 1001;
 }
 
-.chat-toggle-btn-active {
-  background-color: #FFDCB9; /* 變色效果，可根據需求修改 */
-  color: #fff;
-  border: none;
+.toggle-chat-button img {
+  margin-right: 1em;
 }
 
 /* 聊天視窗的樣式 */
@@ -120,21 +119,4 @@ export default {
   z-index: 1000;
   color: white;
 }
-.floating-toggle-button {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  display: flex;
-  align-items: center;
-  padding: 0;
-  z-index: 1001;
-}
-
-.floating-toggle-button img {
-  margin-right: 1em;
-}
-  
 </style>
