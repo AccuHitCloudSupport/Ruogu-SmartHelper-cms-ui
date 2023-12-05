@@ -93,6 +93,7 @@ export default {
   right: 0px;
   display: flex;
   align-items: center;
+  pointer-events: none; /* 透传点击事件到按钮 */
 }
 
 .toggle-dialog-button {
