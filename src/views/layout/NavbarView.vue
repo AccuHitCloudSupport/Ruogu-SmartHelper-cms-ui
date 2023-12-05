@@ -100,6 +100,7 @@ export default {
   align-items: flex-start;
   justify-content: flex-end;
   padding: 0 10px;
+  overflow: hidden; /* 新增 overflow 属性 */
 }
 
 /* 開關按鈕 */
@@ -111,10 +112,10 @@ export default {
   z-index: 1000;
   color: white;
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 0;
+  right: 10px; /* 调整位置 */
 }
-
+  
 .toggle-dialog-button img {
   width: 35px;
   height: 35px;
