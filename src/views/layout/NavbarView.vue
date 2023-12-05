@@ -97,8 +97,8 @@ export default {
   border-bottom: 5px solid #0080FF !important;
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: flex-end; /* 將展開的按鈕移到最右邊 */
+  align-items: flex-start;
+  justify-content: flex-end;
   padding: 0 10px;
 }
 
@@ -110,11 +110,15 @@ export default {
   border: none;
   z-index: 1000;
   color: white;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
 
 .toggle-dialog-button img {
-  width: 15px;
-  height: 15px;
+  width: 35px;
+  height: 35px;
   filter: invert(100%);
 }
 </style>
+
