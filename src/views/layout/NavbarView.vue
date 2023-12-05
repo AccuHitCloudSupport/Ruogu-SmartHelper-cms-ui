@@ -50,7 +50,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 /* 共用樣式 */
 .nav-item {
   /* 共用的樣式設定，可以根據需要調整 */
