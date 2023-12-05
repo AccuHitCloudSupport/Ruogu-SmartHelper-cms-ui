@@ -6,7 +6,7 @@
       <li class="nav-item"><router-link to="/dataMangent" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/gridicons.svg"> 資料處理</router-link></li>
     </ul>
     <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
-      <div class="chat-header" @click="toggleDialogSize">
+      <div class="chat-header">
         <!-- WebChat 字樣 -->
         <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
       </div>
@@ -14,8 +14,7 @@
     </div>
     <!-- 開關按鈕 -->
     <button @click="toggleDialogSize" class="toggle-dialog-button">
-      <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
-      <img v-else class="me-1 node-icon" src="../../assets/img/up.png" style="width: 15px; height: 15px; filter: invert(100%);">
+      <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
     </button>
   </div>
 </template>
@@ -100,14 +99,13 @@ export default {
 
 /* 開關按鈕 */
 .toggle-dialog-button {
-  position: absolute;
-  top: 0;
-  right: 0px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
   padding: 5px 10px;
   cursor: pointer;
   background-color: transparent;
   border: none;
   z-index: 1000;
-  color: white;
 }
 </style>
