@@ -5,13 +5,18 @@
       <li class="nav-item"><router-link to="/permission" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/shield.svg"> 權限管理</router-link></li>
       <li class="nav-item"><router-link to="/dataMangent" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/gridicons.svg"> 資料處理</router-link></li>
     </ul>
-    <div class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
+    <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
       <div class="chat-header" @click="toggleDialogSize">
         <!-- WebChat 字樣 -->
-        <img class="me-1 node-icon" :src="chatExpanded ? '../../assets/img/chatbot.png' : '../../assets/img/chatbot_closed.png'" style="width: 35px; height: 35px; filter: invert(100%);">
+        <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
       </div>
-      <iframe v-if="showChat" :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
+      <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
+    <!-- 開關按鈕 -->
+    <button @click="toggleDialogSize" class="toggle-dialog-button">
+      <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
+      <img v-else class="me-1 node-icon" src="../../assets/img/up.png" style="width: 15px; height: 15px; filter: invert(100%);">
+    </button>
   </div>
 </template>
 
@@ -38,8 +43,35 @@ export default {
 </script>
 
 <style scoped>
-/* ... 其他樣式 ... */
+/* 共用樣式 */
+.nav-item {
+  /* 共用的樣式設定，可以根據需要調整 */
+}
 
+.nav-link {
+  /* 共用的樣式設定，可以根據需要調整 */
+}
+
+.node-icon {
+  margin-right: 1em;
+}
+
+/* 打開聊天按鈕的樣式 */
+.chat-toggle-btn {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
+.chat-toggle-btn-active {
+  background-color: #FFDCB9; /* 變色效果，可根據需求修改 */
+  color: #fff;
+  border: none;
+}
+
+/* 聊天視窗的樣式 */
 .chat-container {
   position: fixed;
   bottom: 0;
@@ -49,9 +81,9 @@ export default {
   z-index: 999;
   padding: 0;
   border-radius: 10px; /* 添加圓角，與表頭相同 */
-  cursor: pointer;
 }
 
+/* 表頭樣式 */
 .chat-header {
   background-color: #0080FF;
   opacity: 1;
@@ -59,10 +91,23 @@ export default {
   margin-bottom: 10px;
   border-radius: 10px 10px 0 0;
   border-bottom: 5px solid #0080FF !important;
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 0 10px;
 }
 
+/* 開關按鈕 */
+.toggle-dialog-button {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  z-index: 1000;
+  color: white;
+}
 </style>
