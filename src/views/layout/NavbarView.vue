@@ -43,3 +43,73 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+/* 共用樣式 */
+.nav-item {
+  /* 共用的樣式設定，可以根據需要調整 */
+}
+
+.nav-link {
+  /* 共用的樣式設定，可以根據需要調整 */
+}
+
+.node-icon {
+  margin-right: 1em;
+}
+
+/* 打開聊天按鈕的樣式 */
+.chat-toggle-btn {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
+.chat-toggle-btn-active {
+  background-color: #FFDCB9; /* 變色效果，可根據需求修改 */
+  color: #fff;
+  border: none;
+}
+
+/* 聊天視窗的樣式 */
+.chat-container {
+  position: fixed;
+  bottom: 0;
+  right: 0; /* 控制在最右下角 */
+  border: 1px solid #ccc;
+  background-color: #fff;
+  z-index: 999;
+  padding: 0;
+  border-radius: 10px; /* 添加圓角，與表頭相同 */
+}
+
+/* 表頭樣式 */
+.chat-header {
+  background-color: #0080FF;
+  opacity: 1;
+  height: 60px;
+  margin-bottom: 10px;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 5px solid #0080FF !important;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+/* 開關按鈕 */
+.toggle-dialog-button {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  z-index: 1000;
+  color: white;
+}
+</style>
