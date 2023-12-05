@@ -7,8 +7,6 @@
     </ul>
     <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
       <div class="chat-header">
-        <!-- WebChat 字樣 -->
-        <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
         <!-- 展開/收起 按鈕 -->
         <button @click="toggleDialogSize" class="toggle-dialog-button">
           <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
@@ -17,6 +15,11 @@
       </div>
       <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
+    <!-- 懸浮的開關 -->
+    <button class="floating-toggle-button" @click="toggleChat">
+      <img v-if="!showChat" class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
+      <img v-else class="me-1 node-icon" src="../../assets/img/close-icon.png" style="width: 25px; height: 25px; filter: invert(100%);">
+    </button>
   </div>
 </template>
 
@@ -37,6 +40,9 @@ export default {
   methods: {
     toggleDialogSize() {
       this.chatExpanded = !this.chatExpanded;
+    },
+    toggleChat() {
+      this.showChat = !this.showChat;
     }
   }
 }
@@ -114,4 +120,21 @@ export default {
   z-index: 1000;
   color: white;
 }
+.floating-toggle-button {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  z-index: 1001;
+}
+
+.floating-toggle-button img {
+  margin-right: 1em;
+}
+  
 </style>
