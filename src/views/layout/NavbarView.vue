@@ -72,4 +72,9 @@ export default {
   padding: 5px 10px;
   border-radius: 10px 0 0 0; /* 调整按钮的圆角 */
 }
+
+/* 隐藏表头 */
+.chat-container .chat-header {
+  display: none;
+}
 </style>
