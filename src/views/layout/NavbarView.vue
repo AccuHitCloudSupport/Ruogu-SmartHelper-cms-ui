@@ -49,13 +49,13 @@ export default {
 </script>
 
 <style scoped>
-/* 共用樣式 */
 .nav-item {
-  /* 共用的樣式設定，可以根據需要調整 */
+  margin-bottom: 1rem;
 }
 
 .nav-link {
-  /* 共用的樣式設定，可以根據需要調整 */
+  color: #000;
+  text-decoration: none;
 }
 
 .node-icon {
@@ -80,19 +80,18 @@ export default {
   margin-right: 1em;
 }
 
-/* 聊天視窗的樣式 */
+/* 聊天視窗樣式 */
 .chat-container {
   position: fixed;
   bottom: 0;
-  right: 0; /* 控制在最右下角 */
+  right: 0;
   border: 1px solid #ccc;
   background-color: #fff;
   z-index: 999;
   padding: 0;
-  border-radius: 10px; /* 添加圓角，與表頭相同 */
+  border-radius: 10px;
 }
 
-/* 表頭樣式 */
 .chat-header {
   background-color: #0080FF;
   opacity: 1;
@@ -107,11 +106,10 @@ export default {
   padding: 0 10px;
 }
 
-/* 開關按鈕 */
 .toggle-dialog-button {
   position: absolute;
   top: 0;
-  right: 0px;
+  right: 0;
   padding: 5px 10px;
   cursor: pointer;
   background-color: transparent;
@@ -119,4 +117,6 @@ export default {
   z-index: 1000;
   color: white;
 }
+
+/* ... 其他樣式 ... */
 </style>
