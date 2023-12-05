@@ -1,15 +1,10 @@
 <template>
-  <div class="navbar-vertical navbar-expand">
+  <div>
     <!-- 開關按鈕 -->
     <button class="toggle-chat-button" @click="toggleChat">
       <img v-if="!showChat" class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
       <img v-else class="me-1 node-icon" src="../../assets/img/close-icon.png" style="width: 25px; height: 25px; filter: invert(100%);">
     </button>
-    <ul class="py-4 px-3">
-      <!-- 其他項目 -->
-      <li class="nav-item"><router-link to="/permission" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/shield.svg"> 權限管理</router-link></li>
-      <li class="nav-item"><router-link to="/dataMangent" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/gridicons.svg"> 資料處理</router-link></li>
-    </ul>
     <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
       <div class="chat-header">
         <!-- WebChat 字樣 -->
@@ -51,19 +46,6 @@ export default {
 </script>
 
 <style>
-/* 共用樣式 */
-.nav-item {
-  /* 共用的樣式設定，可以根據需要調整 */
-}
-
-.nav-link {
-  /* 共用的樣式設定，可以根據需要調整 */
-}
-
-.node-icon {
-  margin-right: 1em;
-}
-
 /* 開關按鈕樣式 */
 .toggle-chat-button {
   position: fixed;
@@ -86,12 +68,12 @@ export default {
 .chat-container {
   position: fixed;
   bottom: 0;
-  right: 0; /* 控制在最右下角 */
+  right: 0;
   border: 1px solid #ccc;
   background-color: #fff;
   z-index: 999;
   padding: 0;
-  border-radius: 10px; /* 添加圓角，與表頭相同 */
+  border-radius: 10px;
 }
 
 /* 表頭樣式 */
