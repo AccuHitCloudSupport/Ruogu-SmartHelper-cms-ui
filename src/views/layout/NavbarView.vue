@@ -7,7 +7,7 @@
     </ul>
     <div class="chat-container">
       <button @click="toggleDialogSize" class="toggle-dialog-button">
-        <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
+        <img v-if="!chatExpanded" class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
         <img v-else class="me-1 node-icon" src="../../assets/img/up.png" style="width: 15px; height: 15px; filter: invert(100%);">
       </button>
       <iframe v-if="chatExpanded" :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
@@ -20,7 +20,7 @@ export default {
   name: 'NavbarView',
   data() {
     return {
-      chatExpanded: true
+      chatExpanded: false
     };
   },
   computed: {
@@ -62,7 +62,7 @@ export default {
 /* 開關按鈕 */
 .toggle-dialog-button {
   cursor: pointer;
-  background-color: #0080FF; /* 修改開關按鈕的背景顏色 */
+  background-color: #0080FF;
   border: none;
   z-index: 1000;
   color: white;
@@ -70,12 +70,7 @@ export default {
   bottom: 0;
   right: 0;
   padding: 5px 10px;
-  border-radius: 10px 0 0 0; /* 調整按鈕的圓角 */
-}
-
-/* 隱藏表頭 */
-.chat-container .chat-header {
-  display: none;
+  border-radius: 10px 0 0 0;
 }
 
 /* 隱藏展開時的 iframe */
