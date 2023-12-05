@@ -49,18 +49,7 @@ export default {
 </script>
 
 <style scoped>
-.nav-item {
-  margin-bottom: 1rem;
-}
-
-.nav-link {
-  color: #000;
-  text-decoration: none;
-}
-
-.node-icon {
-  margin-right: 1em;
-}
+/* ... 其他樣式 ... */
 
 /* 開關按鈕樣式 */
 .toggle-chat-button {
