@@ -62,7 +62,7 @@ export default {
 /* 開關按鈕 */
 .toggle-dialog-button {
   cursor: pointer;
-  background-color: #0080FF; /* 修改开关按钮的背景颜色 */
+  background-color: #0080FF; /* 修改開關按鈕的背景顏色 */
   border: none;
   z-index: 1000;
   color: white;
@@ -70,11 +70,16 @@ export default {
   bottom: 0;
   right: 0;
   padding: 5px 10px;
-  border-radius: 10px 0 0 0; /* 调整按钮的圆角 */
+  border-radius: 10px 0 0 0; /* 調整按鈕的圓角 */
 }
 
-/* 隐藏表头 */
+/* 隱藏表頭 */
 .chat-container .chat-header {
+  display: none;
+}
+
+/* 隱藏展開時的 iframe */
+.chat-container iframe {
   display: none;
 }
 </style>
