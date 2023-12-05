@@ -63,6 +63,12 @@ export default {
   align-items: center;
 }
 
+.chat-toggle-btn img {
+  width: 35px;
+  height: 35px;
+  filter: invert(100%);
+}
+
 .chat-toggle-btn-active {
   background-color: #FFDCB9; /* 變色效果，可根據需求修改 */
   color: #fff;
@@ -92,20 +98,23 @@ export default {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end; /* 將展開的按鈕移到最右邊 */
   padding: 0 10px;
 }
 
 /* 開關按鈕 */
 .toggle-dialog-button {
-  position: absolute;
-  top: 0;
-  right: 0px;
-  padding: 5px 10px;
+  padding: 0; /* 移除原本的 padding */
   cursor: pointer;
   background-color: transparent;
   border: none;
   z-index: 1000;
   color: white;
+}
+
+.toggle-dialog-button img {
+  width: 15px;
+  height: 15px;
+  filter: invert(100%);
 }
 </style>
