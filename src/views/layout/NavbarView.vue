@@ -119,6 +119,9 @@ export default {
   width: 35px;
   height: 35px;
   filter: invert(100%);
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
 </style>
 
