@@ -5,17 +5,12 @@
       <li class="nav-item"><router-link to="/permission" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/shield.svg"> 權限管理</router-link></li>
       <li class="nav-item"><router-link to="/dataMangent" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/gridicons.svg"> 資料處理</router-link></li>
     </ul>
-    <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
-      <div class="toggle-dialog-button" @click="toggleDialogSize">
-        <!-- 展開/收起 按鈕 -->
-        <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
-        <img v-else class="me-1 node-icon" src="../../assets/img/up.png" style="width: 15px; height: 15px; filter: invert(100%);">
-      </div>
-      <div class="chat-header">
+    <div class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
+      <div class="chat-header" @click="toggleDialogSize">
         <!-- WebChat 字樣 -->
-        <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
+        <img class="me-1 node-icon" :src="chatExpanded ? '../../assets/img/chatbot.png' : '../../assets/img/chatbot_closed.png'" style="width: 35px; height: 35px; filter: invert(100%);">
       </div>
-      <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
+      <iframe v-if="showChat" :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
   </div>
 </template>
@@ -43,38 +38,18 @@ export default {
 </script>
 
 <style scoped>
-.nav-item {
-  /* 共用的樣式設定，可以根據需要調整 */
-}
-
-.nav-link {
-  /* 共用的樣式設定，可以根據需要調整 */
-}
-
-.node-icon {
-  margin-right: 1em;
-}
-
-.toggle-dialog-button {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  z-index: 1000;
-  color: white;
-}
+/* ... 其他樣式 ... */
 
 .chat-container {
   position: fixed;
   bottom: 0;
-  right: 0;
+  right: 0; /* 控制在最右下角 */
   border: 1px solid #ccc;
   background-color: #fff;
   z-index: 999;
   padding: 0;
-  border-radius: 10px;
+  border-radius: 10px; /* 添加圓角，與表頭相同 */
+  cursor: pointer;
 }
 
 .chat-header {
@@ -84,10 +59,10 @@ export default {
   margin-bottom: 10px;
   border-radius: 10px 10px 0 0;
   border-bottom: 5px solid #0080FF !important;
-  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0 10px;
 }
+
 </style>
