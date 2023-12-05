@@ -2,25 +2,34 @@
   <div class="navbar-vertical navbar-expand">
     <ul class="py-4 px-3">
       <!-- 其他項目 -->
-      <li class="nav-item"><router-link to="/permission" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/shield.svg"> 權限管理</router-link></li>
-      <li class="nav-item"><router-link to="/dataMangent" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/gridicons.svg"> 資料處理</router-link></li>
+      <li class="nav-item">
+        <router-link to="/permission" class="nav-link" href="#">
+          <img class="me-1 node-icon" src="../../assets/img/shield.svg"> 權限管理
+        </router-link>
+      </li>
+      <li class="nav-item">
+        <router-link to="/dataMangent" class="nav-link" href="#">
+          <img class="me-1 node-icon" src="../../assets/img/gridicons.svg"> 資料處理
+        </router-link>
+      </li>
     </ul>
+    <!-- 開關按鈕 -->
+    <button @click="toggleDialogSize" class="toggle-dialog-button">
+      <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
+    </button>
     <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
       <div class="chat-header">
         <!-- WebChat 字樣 -->
-        <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
-        <!-- 展開/收起 按鈕 -->
-        <button @click="toggleDialogSize" class="toggle-dialog-button">
-          <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
-          <img v-else class="me-1 node-icon" src="../../assets/img/up.png" style="width: 15px; height: 15px; filter: invert(100%);">
-        </button>
+        <div>
+          <!-- 原本的展開/收起 按鈕 -->
+          <button @click="toggleDialogSize" class="toggle-dialog-button">
+            <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
+            <img v-else class="me-1 node-icon" src="../../assets/img/up.png" style="width: 15px; height: 15px; filter: invert(100%);">
+          </button>
+        </div>
       </div>
       <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
-    <!-- 開關按鈕 -->
-    <button @click="toggleDialogSize" class="toggle-dialog-button" :style="{ display: chatExpanded ? 'none' : 'block' }">
-      <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
-    </button>
   </div>
 </template>
 
@@ -60,31 +69,28 @@ export default {
   margin-right: 1em;
 }
 
-/* 打開聊天按鈕的樣式 */
-.chat-toggle-btn {
+/* 開關按鈕的樣式 */
+.toggle-dialog-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 5px;
   cursor: pointer;
   background-color: transparent;
   border: none;
-  display: flex;
-  align-items: center;
-}
-
-.chat-toggle-btn-active {
-  background-color: #FFDCB9; /* 變色效果，可根據需求修改 */
-  color: #fff;
-  border: none;
+  z-index: 1000;
 }
 
 /* 聊天視窗的樣式 */
 .chat-container {
   position: fixed;
   bottom: 0;
-  right: 0; /* 控制在最右下角 */
+  right: 0;
   border: 1px solid #ccc;
   background-color: #fff;
   z-index: 999;
   padding: 0;
-  border-radius: 10px; /* 添加圓角，與表頭相同 */
+  border-radius: 10px;
 }
 
 /* 表頭樣式 */
@@ -102,15 +108,4 @@ export default {
   padding: 0 10px;
 }
 
-/* 開關按鈕 */
-.toggle-dialog-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 5px 10px;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  z-index: 1000;
-}
 </style>
