@@ -98,19 +98,22 @@ export default {
   position: relative;
   display: flex;
   align-items: flex-end;
-  justify-content: flex-end; /* 调整对齐方式 */
+  justify-content: flex-end;
   padding: 0 10px;
-  overflow: hidden; /* 新增 overflow 属性 */
+  overflow: hidden;
 }
 
 /* 開關按鈕 */
 .toggle-dialog-button {
-  padding: 0; /* 移除原本的 padding */
+  padding: 0;
   cursor: pointer;
   background-color: transparent;
   border: none;
   z-index: 1000;
   color: white;
+  position: absolute; /* 调整为绝对定位 */
+  bottom: 0; /* 调整到底部 */
+  right: 0; /* 调整到最右边 */
 }
 
   
