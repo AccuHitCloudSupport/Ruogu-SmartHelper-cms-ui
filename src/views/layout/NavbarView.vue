@@ -8,16 +8,12 @@
     <div class="chat-container">
       <div class="chat-header">
         <!-- WebChat 字樣 -->
-        <img class="me-1 node-icon" v-if="chatExpanded" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
-        <!-- 展開/收起 按鈕 -->
-        <button @click="toggleDialogSize" class="me-1 node-icon toggle-dialog-button">
+        <button @click="toggleDialogSize" class="toggle-dialog-button">
           <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
           <img v-else class="me-1 node-icon" src="../../assets/img/up.png" style="width: 15px; height: 15px; filter: invert(100%);">
         </button>
+        <img class="me-1 node-icon" v-if="chatExpanded" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
       </div>
-      <button @click="toggleDialogSize" class="toggle-dialog-button">
-        <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
-      </button>
       <iframe v-if="chatExpanded" :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
   </div>
