@@ -5,7 +5,7 @@
       <li class="nav-item"><router-link to="/permission" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/shield.svg"> 權限管理</router-link></li>
       <li class="nav-item"><router-link to="/dataMangent" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/gridicons.svg"> 資料處理</router-link></li>
     </ul>
-    <div class="chat-container">
+    <div class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
       <div v-if="!chatExpanded" class="toggle-dialog-container">
         <!-- 展開 按鈕 -->
         <button @click="toggleDialogSize" class="toggle-dialog-button">
@@ -15,7 +15,7 @@
       <div v-if="chatExpanded" class="chat-header">
         <!-- WebChat 字樣 -->
         <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
-        <!-- 展開/收起 按鈕 -->
+        <!-- 展開/收起 按鈕容器 -->
         <div class="toggle-dialog-container">
           <!-- 收起 按鈕 -->
           <button @click="toggleDialogSize" class="toggle-dialog-button">
@@ -96,7 +96,7 @@ export default {
 /* 開關按鈕容器 */
 .toggle-dialog-container {
   position: absolute;
-  top: 0;
+  top: 60px; /* 上移 60px */
   right: 0;
   display: flex;
   align-items: center;
