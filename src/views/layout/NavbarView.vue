@@ -12,11 +12,11 @@
         <!-- 展開/收起 按鈕容器 -->
         <div class="toggle-dialog-container">
           <!-- 展開按鈕 -->
-          <button v-if="!chatExpanded" @click="toggleDialogSize" class="toggle-dialog-button" style="margin-top: -60px;">
+          <button v-if="!chatExpanded" @click="toggleDialogSize" class="toggle-dialog-button up-button">
             <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
           </button>
           <!-- 收起按鈕 -->
-          <button v-if="chatExpanded" @click="toggleDialogSize" class="toggle-dialog-button" style="margin-top: -60px;">
+          <button v-if="chatExpanded" @click="toggleDialogSize" class="toggle-dialog-button down-button">
             <img class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
           </button>
         </div>
@@ -105,5 +105,14 @@ export default {
   border: none;
   z-index: 1000;
   color: white;
+  position: relative;
+}
+
+.up-button {
+  margin-top: -60px;
+}
+
+.down-button {
+  margin-top: -60px;
 }
 </style>
