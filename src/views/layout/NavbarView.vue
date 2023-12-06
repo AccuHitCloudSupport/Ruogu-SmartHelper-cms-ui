@@ -102,7 +102,6 @@ export default {
   border: none;
   z-index: 1000;
   color: white;
-  position: relative;
 }
 
 .icon {
