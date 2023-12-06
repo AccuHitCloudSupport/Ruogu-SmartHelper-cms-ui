@@ -16,10 +16,14 @@
             <img class="icon" src="../../assets/img/chat.png">
           </button>
           <!-- 收回 按鈕 -->
-          <button v-else @click="toggleDialogSize" class="toggle-dialog-button">
+          <button v-else @click="hideDialog" class="toggle-dialog-button">
             <img class="icon" src="../../assets/img/down.png">
           </button>
         </div>
+        <!-- 展開按鈕 -->
+        <button v-if="!chatExpanded" @click="showDialog" class="toggle-dialog-button">
+          <img class="icon" src="../../assets/img/up.png">
+        </button>
       </div>
       <iframe v-if="chatExpanded" :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
@@ -42,6 +46,12 @@ export default {
   methods: {
     toggleDialogSize() {
       this.chatExpanded = !this.chatExpanded;
+    },
+    hideDialog() {
+      this.chatExpanded = false;
+    },
+    showDialog() {
+      this.chatExpanded = true;
     }
   }
 }
