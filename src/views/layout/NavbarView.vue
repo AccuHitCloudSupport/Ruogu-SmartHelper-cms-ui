@@ -90,7 +90,7 @@ export default {
 /* 開關按鈕 */
 .toggle-dialog-container {
   position: absolute;
-  top: 0;
+  top: 50px; /* 調整往上移動的高度 */
   right: 0px;
   display: flex;
   align-items: center;
