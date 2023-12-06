@@ -14,89 +14,30 @@
     </ul>
     <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
       <div class="chat-header">
-        <button @click="toggleChat" class="close-chat">
-          <img class="me-1 node-icon" src="../../assets/img/close.png" style="width: 15px; height: 15px;">
-        </button>
         <!-- 展開/收起 按鈕 -->
         <button @click="toggleDialogSize" class="toggle-dialog-button">
           <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/up.png" style="width: 15px; height: 15px; filter: invert(100%);">
           <img v-else class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
         </button>
+        <!-- 移除關閉按鈕 -->
       </div>
       <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'NavbarView',
-  data() {
-    return {
-      showChat: false,
-      chatExpanded: true
-    };
-  },
-  computed: {
-    chatSrc() {
-      // 使用環境變數
-      return `https://webchat.botframework.com/embed/testing-smarthelper-chatbot-bot?s=${process.env.VUE_APP_BOT_TOKEN}`;
-    }
-  },
-  methods: {
-    toggleChat() {
-      this.showChat = !this.showChat;
-    },
-    toggleDialogSize() {
-      this.chatExpanded = !this.chatExpanded;
-    }
-  }
-}
-</script>
+<!-- 其他部分保持不變 -->
 
 <style scoped>
 /* 共用樣式 */
-.nav-item {
-  /* 共用的樣式設定，可以根據需要調整 */
-}
-
-.nav-link {
-  /* 共用的樣式設定，可以根據需要調整 */
-}
-
-.node-icon {
-  margin-right: 1em;
-}
-
-/* 打開聊天按鈕的樣式 */
-.chat-toggle-btn {
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  display: flex;
-  align-items: center;
-}
-
-.chat-toggle-btn-active {
-  background-color: #FFDCB9; /* 變色效果，可根據需求修改 */
-  color: #fff;
-  border: none;
-}
+/* ... */
 
 /* 聊天視窗的樣式 */
-.chat-container {
-  position: fixed;
-  bottom: 0;
-  right: 0; /* 控制在最右下角 */
-  border: 1px solid #ccc;
-  background-color: #fff;
-  z-index: 999;
-  padding: 0;
-  border-radius: 10px; /* 添加圓角，與表頭相同 */
-}
+/* ... */
 
 /* 表頭樣式 */
 .chat-header {
+  display: flex; /* 新增這行，讓展開/收起按鈕靠左對齊 */
   background-color: #FF9224; /* 橘色背景 */
   opacity: 1; /* 透明度 100% */
   height: 45px; /* 調整表頭高度 */
@@ -104,26 +45,17 @@ export default {
   border-radius: 10px 10px 0 0; /* 添加圓角，使整個表頭上方兩邊為圓角 */
   border-bottom: 5px solid #FF8000 !important; /* 使用 !important 強制生效 */
   position: relative; /* 相對定位，以便絕對定位的按鈕參照 */
+  align-items: center; /* 新增這行，讓元素垂直居中 */
 }
 
 /* 關閉按鈕的樣式 */
-.close-chat {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 5px 10px;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  z-index: 1000; /* 將 z-index 設定為更高的值，確保在最上層 */
-  color: white;
-}
+/* 移除相關樣式 */
 
 /* 開關按鈕 */
 .toggle-dialog-button {
-  position: absolute;
-  top: 0;
-  right: 25px;
+  /* 調整位置 */
+  margin-right: auto;
+  margin-left: 10px;
   padding: 5px 10px;
   cursor: pointer;
   background-color: transparent;
