@@ -14,9 +14,8 @@
     </ul>
     <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
       <div class="chat-header">
-        <!-- 新增下縮按鈕 -->
-        <button @click="toggleDialogHeight" class="toggle-dialog-height-button">
-          <img v-if="!chatExpanded" class="me-1 node-icon" src="../../assets/img/expand.png" style="width: 15px; height: 15px; filter: invert(100%);">
+        <button @click="toggleChat" class="close-chat">
+          <img class="me-1 node-icon" src="../../assets/img/close.png" style="width: 15px; height: 15px;">
         </button>
         <!-- 展開/收起 按鈕 -->
         <button @click="toggleDialogSize" class="toggle-dialog-button">
@@ -24,7 +23,7 @@
           <img v-else class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
         </button>
       </div>
-      <iframe :src="chatSrc" style="min-width: 400px; width: 100%; min-height: 500px;" class="orange-background"></iframe>
+      <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
   </div>
 </template>
@@ -50,9 +49,6 @@ export default {
     },
     toggleDialogSize() {
       this.chatExpanded = !this.chatExpanded;
-    },
-    toggleDialogHeight() {
-      // 實作下縮按鈕的功能
     }
   }
 }
@@ -106,6 +102,8 @@ export default {
   height: 45px; /* 調整表頭高度 */
   margin-bottom: 10px; /* 新增這行，給表頭留出一些空間 */
   border-radius: 10px 10px 0 0; /* 添加圓角，使整個表頭上方兩邊為圓角 */
+  border-bottom: 5px solid #FF8000 !important; /* 使用 !important 強制生效 */
+  position: relative; /* 相對定位，以便絕對定位的按鈕參照 */
 }
 
 /* 關閉按鈕的樣式 */
@@ -126,19 +124,6 @@ export default {
   position: absolute;
   top: 0;
   right: 25px;
-  padding: 5px 10px;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  z-index: 1000;
-  color: white;
-}
-
-/* 下縮按鈕 */
-.toggle-dialog-height-button {
-  position: absolute;
-  top: 0;
-  right: 50px;
   padding: 5px 10px;
   cursor: pointer;
   background-color: transparent;
