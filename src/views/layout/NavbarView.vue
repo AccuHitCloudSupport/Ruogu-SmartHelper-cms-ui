@@ -29,4 +29,80 @@
   </div>
 </template>
 
-<!-- ... (剩餘部分保持不變) -->
+<script>
+export default {
+  name: 'NavbarView',
+  data() {
+    return {
+      showChat: false,
+      chatExpanded: true
+    };
+  },
+  computed: {
+    chatSrc() {
+      // 使用環境變數
+      return `https://webchat.botframework.com/embed/testing-smarthelper-chatbot-bot?s=${process.env.VUE_APP_BOT_TOKEN}`;
+    }
+  },
+  methods: {
+    toggleChat() {
+      this.showChat = !this.showChat;
+    },
+    toggleDialogSize() {
+      this.chatExpanded = !this.chatExpanded;
+    },
+    toggleDialogHeight() {
+      // 實作下縮按鈕的功能
+    }
+  }
+}
+</script>
+
+<style scoped>
+/* 共用樣式 */
+.nav-item {
+  /* 共用的樣式設定，可以根據需要調整 */
+}
+
+.nav-link {
+  /* 共用的樣式設定，可以根據需要調整 */
+}
+
+.node-icon {
+  margin-right: 1em;
+}
+
+/* 打開聊天按鈕的樣式 */
+.chat-toggle-btn {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
+.chat-toggle-btn-active {
+  background-color: #FFDCB9; /* 變色效果，可根據需求修改 */
+  color: #fff;
+  border: none;
+}
+
+/* 聊天視窗的樣式 */
+.chat-container {
+  position: fixed;
+  bottom: 0;
+  right: 0; /* 控制在最右下角 */
+  border: 1px solid #ccc;
+  background-color: #fff;
+  z-index: 999;
+  padding: 0;
+  border-radius: 10px; /* 添加圓角，與表頭相同 */
+}
+
+/* 表頭樣式 */
+.chat-header {
+  background-color: #FF9224; /* 橘色背景 */
+  opacity: 1; /* 透明度 100% */
+  height: 45px; /* 調整表頭高度 */
+  margin-bottom: 10px; /* 新增這行，給表頭留出一些空間 */
+  border-radius: 10px 10px 0 0; /* 添加圓角，使整個表頭上方兩邊為圓角
