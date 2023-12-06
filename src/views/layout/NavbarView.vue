@@ -71,7 +71,7 @@ export default {
   margin-right: 1em;
 }
 
-/* 聊天視窗的樣式 */
+<!-- 聊天視窗的樣式 -->
 .chat-container {
   position: fixed;
   bottom: 0;
@@ -82,6 +82,7 @@ export default {
   padding: 0;
   border-radius: 10px; /* 添加圓角，與表頭相同 */
   overflow: hidden; /* 隱藏多餘內容 */
+  height: 0; /* 修改這裡 */
   transition: all 0.3s; /* 添加過渡效果 */
 }
 
