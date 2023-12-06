@@ -71,11 +71,6 @@ export default {
   overflow: hidden; /* 隱藏多餘內容 */
 }
 
-/* 隱藏聊天視窗 */
-.chat-container iframe {
-  display: none;
-}
-
 /* 表頭樣式 */
 .chat-header {
   background-color: #0080FF;
