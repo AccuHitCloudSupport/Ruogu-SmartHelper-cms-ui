@@ -24,7 +24,7 @@
           <img v-else class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
         </button>
       </div>
-      <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
+      <iframe :src="chatSrc" style="min-width: 400px; width: 100%; min-height: 500px;" class="orange-background"></iframe>
     </div>
   </div>
 </template>
@@ -105,4 +105,45 @@ export default {
   opacity: 1; /* 透明度 100% */
   height: 45px; /* 調整表頭高度 */
   margin-bottom: 10px; /* 新增這行，給表頭留出一些空間 */
-  border-radius: 10px 10px 0 0; /* 添加圓角，使整個表頭上方兩邊為圓角
+  border-radius: 10px 10px 0 0; /* 添加圓角，使整個表頭上方兩邊為圓角 */
+}
+
+/* 關閉按鈕的樣式 */
+.close-chat {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  z-index: 1000; /* 將 z-index 設定為更高的值，確保在最上層 */
+  color: white;
+}
+
+/* 開關按鈕 */
+.toggle-dialog-button {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  z-index: 1000;
+  color: white;
+}
+
+/* 下縮按鈕 */
+.toggle-dialog-height-button {
+  position: absolute;
+  top: 0;
+  right: 50px;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  z-index: 1000;
+  color: white;
+}
+</style>
