@@ -11,10 +11,13 @@
         <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
         <!-- 展開/收起 按鈕容器 -->
         <div class="toggle-dialog-container">
-          <!-- 展開/收起 按鈕 -->
-          <button @click="toggleDialogSize" class="toggle-dialog-button" style="margin-top: -60px;">
-            <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
-            <img v-else class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
+          <!-- 展開按鈕 -->
+          <button v-if="!chatExpanded" @click="toggleDialogSize" class="toggle-dialog-button" style="margin-top: -60px;">
+            <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
+          </button>
+          <!-- 收起按鈕 -->
+          <button v-if="chatExpanded" @click="toggleDialogSize" class="toggle-dialog-button" style="margin-top: -60px;">
+            <img class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
           </button>
         </div>
       </div>
