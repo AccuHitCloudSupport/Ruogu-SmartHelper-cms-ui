@@ -13,8 +13,8 @@
         <div class="toggle-dialog-container">
           <!-- 展開/收起 按鈕 -->
           <button @click="toggleDialogSize" class="toggle-dialog-button" :style="{ top: chatExpanded ? '0' : '-60px' }">
-            <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
-            <img v-else class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
+            <img v-if="chatExpanded" class="icon" src="../../assets/img/down.png">
+            <img v-else class="icon" src="../../assets/img/chatbot.png">
           </button>
         </div>
       </div>
@@ -102,5 +102,12 @@ export default {
   border: none;
   z-index: 1000;
   color: white;
+  position: relative;
+}
+
+.icon {
+  width: 35px;
+  height: 35px;
+  filter: invert(100%);
 }
 </style>
