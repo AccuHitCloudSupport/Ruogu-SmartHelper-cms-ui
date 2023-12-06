@@ -5,20 +5,26 @@
       <li class="nav-item"><router-link to="/permission" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/shield.svg"> 權限管理</router-link></li>
       <li class="nav-item"><router-link to="/dataMangent" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/gridicons.svg"> 資料處理</router-link></li>
     </ul>
-    <div class="chat-container" :style="{ bottom: chatExpanded ? '0' : '-50px' }">
-      <div class="chat-header">
+    <div class="chat-container">
+      <div v-if="!chatExpanded" class="toggle-dialog-container">
+        <!-- 展開 按鈕 -->
+        <button @click="toggleDialogSize" class="toggle-dialog-button">
+          <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
+        </button>
+      </div>
+      <div v-if="chatExpanded" class="chat-header">
         <!-- WebChat 字樣 -->
         <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
         <!-- 展開/收起 按鈕 -->
         <div class="toggle-dialog-container">
-          <!-- 展開/收起 按鈕 -->
+          <!-- 收起 按鈕 -->
           <button @click="toggleDialogSize" class="toggle-dialog-button">
             <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
             <img v-else class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
           </button>
         </div>
       </div>
-      <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
+      <iframe v-if="chatExpanded" :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
   </div>
 </template>
@@ -62,11 +68,12 @@ export default {
 .chat-container {
   position: fixed;
   right: 0;
+  bottom: 0;
   border: 1px solid #ccc;
   background-color: #fff;
   z-index: 999;
   padding: 0;
-  border-radius: 10px; /* 添加圓角，與表頭相同 */
+  border-radius: 10px; /* 添加圓角 */
   overflow: hidden; /* 隱藏多餘內容 */
   transition: bottom 0.3s; /* 加入過渡效果 */
 }
@@ -86,15 +93,16 @@ export default {
   padding: 0 10px;
 }
 
-/* 開關按鈕 */
+/* 開關按鈕容器 */
 .toggle-dialog-container {
   position: absolute;
   top: 0;
-  right: 0px;
+  right: 0;
   display: flex;
   align-items: center;
 }
 
+/* 開關按鈕 */
 .toggle-dialog-button {
   padding: 5px 10px;
   cursor: pointer;
