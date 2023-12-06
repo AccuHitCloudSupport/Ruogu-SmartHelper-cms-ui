@@ -12,7 +12,7 @@
         <!-- 展開/收起 按鈕容器 -->
         <div class="toggle-dialog-container">
           <!-- 展開/收起 按鈕 -->
-          <button @click="toggleDialogSize" class="toggle-dialog-button" :style="{ top: chatExpanded ? '0' : '-60px' }">
+          <button @click="toggleDialogSize" class="toggle-dialog-button" :style="{ top: chatExpanded ? '-60px' : '0' }">
             <img v-if="chatExpanded" class="icon" src="../../assets/img/down.png">
             <img v-else class="icon" src="../../assets/img/chatbot.png">
           </button>
