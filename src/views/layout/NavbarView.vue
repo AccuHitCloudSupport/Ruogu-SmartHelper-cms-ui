@@ -5,7 +5,7 @@
       <li class="nav-item"><router-link to="/permission" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/shield.svg"> 權限管理</router-link></li>
       <li class="nav-item"><router-link to="/dataMangent" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/gridicons.svg"> 資料處理</router-link></li>
     </ul>
-    <div class="chat-container" :class="{ 'collapsed': !chatExpanded }">
+    <div class="chat-container">
       <div class="chat-header">
         <!-- WebChat 字樣 -->
         <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
@@ -72,7 +72,7 @@ export default {
 }
 
 /* 隱藏聊天視窗 */
-.collapsed {
+.chat-container iframe {
   display: none;
 }
 
