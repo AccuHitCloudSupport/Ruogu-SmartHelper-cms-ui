@@ -5,7 +5,7 @@
       <li class="nav-item"><router-link to="/permission" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/shield.svg"> 權限管理</router-link></li>
       <li class="nav-item"><router-link to="/dataMangent" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/gridicons.svg"> 資料處理</router-link></li>
     </ul>
-    <div class="chat-container">
+    <div class="chat-container" :class="{ 'collapsed': !chatExpanded }">
       <div class="chat-header">
         <!-- WebChat 字樣 -->
         <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
@@ -18,7 +18,7 @@
           </button>
         </div>
       </div>
-      <iframe v-if="chatExpanded" :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
+      <iframe v-show="chatExpanded" :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
   </div>
 </template>
@@ -61,7 +61,7 @@ export default {
 /* 聊天視窗的樣式 */
 .chat-container {
   position: fixed;
-  bottom: 60px; /* 將位置向上移動 60px */
+  bottom: 0;
   right: 0; /* 控制在最右下角 */
   border: 1px solid #ccc;
   background-color: #fff;
@@ -69,6 +69,11 @@ export default {
   padding: 0;
   border-radius: 10px; /* 添加圓角，與表頭相同 */
   overflow: hidden; /* 隱藏多餘內容 */
+}
+
+/* 隱藏聊天視窗 */
+.collapsed {
+  display: none;
 }
 
 /* 表頭樣式 */
