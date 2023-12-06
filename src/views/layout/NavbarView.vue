@@ -12,9 +12,8 @@
         <!-- 展開/收起 按鈕容器 -->
         <div class="toggle-dialog-container">
           <!-- 展開/收起 按鈕 -->
-          <button @click="toggleDialogSize" class="toggle-dialog-button">
-            <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
-            <img v-else class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
+          <button @click="toggleDialogSize" class="toggle-dialog-button" style="top: -60px;">
+            <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
           </button>
         </div>
       </div>
@@ -61,15 +60,14 @@ export default {
 /* 聊天視窗的樣式 */
 .chat-container {
   position: fixed;
-  right: 0;
   bottom: 0;
+  right: 0; /* 控制在最右下角 */
   border: 1px solid #ccc;
   background-color: #fff;
   z-index: 999;
   padding: 0;
-  border-radius: 10px; /* 添加圓角 */
+  border-radius: 10px; /* 添加圓角，與表頭相同 */
   overflow: hidden; /* 隱藏多餘內容 */
-  transition: bottom 0.3s; /* 加入過渡效果 */
 }
 
 /* 表頭樣式 */
@@ -87,16 +85,15 @@ export default {
   padding: 0 10px;
 }
 
-/* 開關按鈕容器 */
+/* 開關按鈕 */
 .toggle-dialog-container {
   position: absolute;
-  top: -60px; /* 上移 60px */
-  right: 0;
+  top: 0;
+  right: 0px;
   display: flex;
   align-items: center;
 }
 
-/* 開關按鈕 */
 .toggle-dialog-button {
   padding: 5px 10px;
   cursor: pointer;
@@ -104,5 +101,6 @@ export default {
   border: none;
   z-index: 1000;
   color: white;
+  position: relative; /* 添加相對定位 */
 }
 </style>
