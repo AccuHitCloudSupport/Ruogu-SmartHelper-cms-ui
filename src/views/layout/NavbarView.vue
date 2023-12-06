@@ -10,11 +10,14 @@
         <!-- WebChat 字樣 -->
         <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
         <!-- 展開/收起 按鈕容器 -->
-        <div class="toggle-dialog-container" :style="{ top: chatExpanded ? '-60px' : '0' }">
-          <!-- 展開/收起 按鈕 -->
-          <button @click="toggleDialogSize" class="toggle-dialog-button">
-            <img v-if="chatExpanded" class="icon" src="../../assets/img/down.png">
-            <img v-else class="icon" src="../../assets/img/chat.png">
+        <div class="toggle-dialog-container">
+          <!-- 展開 按鈕 -->
+          <button v-if="!chatExpanded" @click="toggleDialogSize" class="toggle-dialog-button">
+            <img class="icon" src="../../assets/img/chat.png">
+          </button>
+          <!-- 收回 按鈕 -->
+          <button v-else @click="toggleDialogSize" class="toggle-dialog-button">
+            <img class="icon" src="../../assets/img/down.png">
           </button>
         </div>
       </div>
@@ -89,6 +92,7 @@ export default {
 /* 開關按鈕 */
 .toggle-dialog-container {
   position: absolute;
+  top: 0;
   right: 0px;
   display: flex;
   align-items: center;
