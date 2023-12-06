@@ -9,22 +9,19 @@
       <div class="chat-header">
         <!-- WebChat 字樣 -->
         <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
-        <!-- 展開按鈕容器 -->
+        <!-- 展開/收起 按鈕容器 -->
         <div class="toggle-dialog-container">
           <!-- 展開按鈕 -->
-          <button @click="expandDialog" class="toggle-dialog-button">
+          <button @click="toggleDialogSize" class="toggle-dialog-button" v-if="chatExpanded">
+            <img class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
+          </button>
+          <!-- 收回按鈕 -->
+          <button @click="toggleDialogSize" class="toggle-dialog-button" v-else>
             <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
           </button>
         </div>
-        <!-- 收回按鈕容器 -->
-        <div class="toggle-dialog-container">
-          <!-- 收回按鈕 -->
-          <button @click="collapseDialog" class="toggle-dialog-button">
-            <img class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
-          </button>
-        </div>
       </div>
-      <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
+      <iframe v-if="chatExpanded" :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
   </div>
 </template>
@@ -43,11 +40,8 @@ export default {
     }
   },
   methods: {
-    expandDialog() {
-      this.chatExpanded = true;
-    },
-    collapseDialog() {
-      this.chatExpanded = false;
+    toggleDialogSize() {
+      this.chatExpanded = !this.chatExpanded;
     }
   }
 }
@@ -97,6 +91,9 @@ export default {
 
 /* 開關按鈕 */
 .toggle-dialog-container {
+  position: absolute;
+  top: -60px; /* 上移60px */
+  right: 0px;
   display: flex;
   align-items: center;
 }
