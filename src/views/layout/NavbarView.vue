@@ -5,7 +5,7 @@
       <li class="nav-item"><router-link to="/permission" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/shield.svg"> 權限管理</router-link></li>
       <li class="nav-item"><router-link to="/dataMangent" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/gridicons.svg"> 資料處理</router-link></li>
     </ul>
-    <div class="chat-container">
+    <div class="chat-container" :class="{ 'expanded': chatExpanded }">
       <div class="chat-header">
         <!-- WebChat 字樣 -->
         <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
@@ -72,6 +72,7 @@ export default {
   padding: 0;
   border-radius: 10px; /* 添加圓角，與表頭相同 */
   overflow: hidden; /* 隱藏多餘內容 */
+  transition: all 0.3s; /* 添加過渡效果 */
 }
 
 /* 表頭樣式 */
@@ -111,5 +112,10 @@ export default {
   width: 35px;
   height: 35px;
   filter: invert(100%);
+}
+
+/* 展開時的樣式 */
+.expanded {
+  height: 560px; /* 調整展開時的高度 */
 }
 </style>
