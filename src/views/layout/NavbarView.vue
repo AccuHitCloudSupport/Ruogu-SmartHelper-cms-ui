@@ -15,10 +15,10 @@
     <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
       <div class="chat-header">
         <!-- 移除close按鈕和圖片 -->
-        <!-- 展開/收起 按鈕移到左邊 -->
+        <!-- 只保留展開/收起 按鈕 -->
         <button @click="toggleDialogSize" class="toggle-dialog-button">
-          <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
-          <img v-else class="me-1 node-icon" src="../../assets/img/up.png" style="width: 15px; height: 15px; filter: invert(100%);">
+          <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/up.png" style="width: 15px; height: 15px; filter: invert(100%);">
+          <img v-else class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
         </button>
       </div>
       <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
@@ -106,7 +106,7 @@ export default {
 
 /* 關閉按鈕的樣式 */
 .close-chat {
-  /* 移除或留空 */
+  display: none; /* 隱藏關閉按鈕 */
 }
 
 /* 開關按鈕 */
