@@ -12,12 +12,12 @@
         <!-- 展開/收起 按鈕容器 -->
         <div class="toggle-dialog-container">
           <!-- 展開按鈕 -->
-          <button @click="toggleDialogSize" class="toggle-dialog-button" v-if="chatExpanded">
-            <img class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
+          <button @click="toggleDialogSize" class="toggle-dialog-button">
+            <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
           </button>
           <!-- 收回按鈕 -->
           <button @click="toggleDialogSize" class="toggle-dialog-button" v-else>
-            <img class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
+            <img class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
           </button>
         </div>
       </div>
@@ -92,7 +92,7 @@ export default {
 /* 開關按鈕 */
 .toggle-dialog-container {
   position: absolute;
-  top: -60px; /* 上移60px */
+  top: 0;
   right: 0px;
   display: flex;
   align-items: center;
