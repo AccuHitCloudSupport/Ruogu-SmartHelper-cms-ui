@@ -12,7 +12,7 @@
         </button>
       </li>
     </ul>
-    <div v-if="showChat" class="chat-container" :class="{ 'chat-container-expanded': chatExpanded }">
+    <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
       <div class="chat-header">
         <!-- 移除close按鈕和圖片 -->
         <!-- 展開/收起 按鈕移到左邊 -->
@@ -91,11 +91,6 @@ export default {
   z-index: 999;
   padding: 0;
   border-radius: 10px; /* 添加圓角，與表頭相同 */
-  overflow: hidden; /* 隱藏內容溢出部分 */
-}
-
-.chat-container-expanded {
-  right: 0;
 }
 
 /* 表頭樣式 */
@@ -125,6 +120,5 @@ export default {
   border: none;
   z-index: 1000;
   color: white;
-  transition: left 0.3s; /* 移到這裡 */
 }
 </style>
