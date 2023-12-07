@@ -13,8 +13,9 @@
       </li>
     </ul>
     <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
-      <div v-if="chatExpanded" class="chat-header">
-        <!-- 展開/收起 按鈕移到右邊 -->
+      <div class="chat-header">
+        <!-- 移除close按鈕和圖片 -->
+        <!-- 展開/收起 按鈕移到左邊 -->
         <button @click="toggleDialogSize" class="toggle-dialog-button">
           <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
           <img v-else class="me-1 node-icon" src="../../assets/img/up.png" style="width: 15px; height: 15px; filter: invert(100%);">
@@ -112,7 +113,7 @@ export default {
 .toggle-dialog-button {
   position: absolute;
   top: 0;
-  right: 0; /* 調整 right 屬性 */
+  left: 0; /* 調整 left 屬性 */
   padding: 5px 10px;
   cursor: pointer;
   background-color: transparent;
