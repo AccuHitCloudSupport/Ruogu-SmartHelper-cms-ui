@@ -13,12 +13,22 @@
       </li>
     </ul>
     <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
-      <div v-if="chatExpanded || !showChat" class="chat-header">
-        <!-- 展開/收起 按鈕移到左邊 -->
-        <button @click="toggleDialogSize" class="toggle-dialog-button">
-          <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
-          <img v-else class="me-1 node-icon" src="../../assets/img/up.png" style="width: 15px; height: 15px; filter: invert(100%);">
-        </button>
+      <div class="chat-header">
+        <div v-if="chatExpanded">
+          <!-- 展開時顯示完整表頭 -->
+          <button @click="toggleDialogSize" class="toggle-dialog-button">
+            <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
+            <img v-else class="me-1 node-icon" src="../../assets/img/up.png" style="width: 15px; height: 15px; filter: invert(100%);">
+          </button>
+        </div>
+        <div v-else>
+          <!-- 在收回時只留下部分表頭，含有展開按鈕 -->
+          <button @click="toggleDialogSize" class="toggle-dialog-button">
+            <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
+            <img v-else class="me-1 node-icon" src="../../assets/img/up.png" style="width: 15px; height: 15px; filter: invert(100%);">
+          </button>
+          <!-- 其他部分表頭內容 -->
+        </div>
       </div>
       <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
