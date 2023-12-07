@@ -13,8 +13,7 @@
       </li>
     </ul>
     <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
-      <div class="chat-header">
-        <!-- 移除close按鈕和圖片 -->
+      <div v-if="chatExpanded || !showChat" class="chat-header">
         <!-- 展開/收起 按鈕移到左邊 -->
         <button @click="toggleDialogSize" class="toggle-dialog-button">
           <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
