@@ -92,7 +92,6 @@ export default {
   padding: 0;
   border-radius: 10px; /* 添加圓角，與表頭相同 */
   overflow: hidden; /* 隱藏內容溢出部分 */
-  transition: right 0.3s; /* 添加過渡效果 */
 }
 
 .chat-container-expanded {
@@ -126,5 +125,6 @@ export default {
   border: none;
   z-index: 1000;
   color: white;
+  transition: left 0.3s; /* 移到這裡 */
 }
 </style>
