@@ -12,12 +12,18 @@
         </button>
       </li>
     </ul>
-    <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px', right: chatExpanded ? '0' : '45px' }">
-      <div class="chat-header">
-        <!-- 展開/收起 按鈕移到左邊 -->
+    <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
+      <div class="chat-header" :style="{ height: chatExpanded ? '45px' : 'auto' }">
+        <!-- WebChat 字樣 -->
+        <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/chatbot.png" style="width: 35px; height: 35px; filter: invert(100%);">
+        <!-- 展開/收起 按鈕 -->
         <button @click="toggleDialogSize" class="toggle-dialog-button">
           <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
           <img v-else class="me-1 node-icon" src="../../assets/img/up.png" style="width: 15px; height: 15px; filter: invert(100%);">
+        </button>
+        <!-- 在 chatExpanded 為 false 時顯示的展開按鈕 -->
+        <button v-if="!chatExpanded" @click="toggleDialogSize" class="toggle-dialog-button">
+          <img class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
         </button>
       </div>
       <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
@@ -90,7 +96,6 @@ export default {
   z-index: 999;
   padding: 0;
   border-radius: 10px; /* 添加圓角，與表頭相同 */
-  transition: right 0.5s; /* 新增過渡效果，讓 right 屬性有平滑過渡效果 */
 }
 
 /* 表頭樣式 */
@@ -102,6 +107,11 @@ export default {
   border-radius: 10px 10px 0 0; /* 添加圓角，使整個表頭上方兩邊為圓角 */
   border-bottom: 5px solid #FF8000 !important; /* 使用 !important 強制生效 */
   position: relative; /* 相對定位，以便絕對定位的按鈕參照 */
+}
+
+/* 關閉按鈕的樣式 */
+.close-chat {
+  /* 移除或留空 */
 }
 
 /* 開關按鈕 */
