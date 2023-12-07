@@ -91,6 +91,7 @@ export default {
   z-index: 999;
   padding: 0;
   border-radius: 10px; /* 添加圓角，與表頭相同 */
+  overflow: hidden; /* 隱藏內容溢出部分 */
   transition: right 0.3s; /* 添加過渡效果 */
 }
 
