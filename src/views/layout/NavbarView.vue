@@ -7,12 +7,12 @@
     </ul>
     <div class="chat-container" :class="{ 'chat-container-expanded': chatExpanded }">
       <div class="chat-header">
-        <div class="toggle-dialog-button-container">
-          <button @click="toggleDialogSize" class="toggle-dialog-button">
-            <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
-          </button>
-          <img v-if="!chatExpanded" class="me-1 node-icon" src="../../assets/img/hello.png" style="width: 37px; height: 37px; filter: invert(100%);">
-        </div>
+        <!-- 移除close按鈕和圖片 -->
+        <!-- 展開/收起 按鈕移到左邊 -->
+        <button @click="toggleDialogSize" class="toggle-dialog-button">
+          <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
+          <img v-else class="me-1 node-icon" src="../../assets/img/hello.png" style="width: 37px; height: 37px; filter: invert(100%);">
+        </button>
       </div>
       <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
@@ -40,7 +40,6 @@ export default {
   }
 }
 </script>
-
 
 <style scoped>
 /* 共用樣式 */
@@ -73,7 +72,7 @@ export default {
 /* 收縮時隱藏內容 */
 .chat-container:not(.chat-container-expanded) {
   right: -347px; /* 或其他您覺得合適的值，以隱藏在視窗外 */
-  bottom: -517px; /* 隱藏在視窗外 */
+  bottom: -517px; /* 或其他您覺得合適的值，以隱藏在視窗外 */
 }
 
 /* 表頭樣式 */
@@ -87,21 +86,21 @@ export default {
   position: relative; /* 相對定位，以便絕對定位的按鈕參照 */
 }
 
-/* 開關按鈕容器 */
-.toggle-dialog-button-container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
+/* 關閉按鈕的樣式 */
+.close-chat {
+  /* 移除或留空 */
 }
 
 /* 開關按鈕 */
 .toggle-dialog-button {
+  position: absolute;
+  top: 0;
+  left: 0; /* 調整 left 屬性 */
   padding: 5px 10px;
   cursor: pointer;
   background-color: transparent;
   border: none;
   z-index: 1000;
+  color: white;
 }
 </style>
