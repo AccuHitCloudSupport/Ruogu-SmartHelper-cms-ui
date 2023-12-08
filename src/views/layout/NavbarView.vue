@@ -71,8 +71,8 @@ export default {
 
 /* 收縮時隱藏內容 */
 .chat-container:not(.chat-container-expanded) {
-  right: -350px; /* 或其他您覺得合適的值，以隱藏在視窗外 */
-  bottom: -510px; /* 或其他您覺得合適的值，以隱藏在視窗外 */
+  right: -345px; /* 或其他您覺得合適的值，以隱藏在視窗外 */
+  bottom: -515px; /* 或其他您覺得合適的值，以隱藏在視窗外 */
 }
 
 /* 表頭樣式 */
