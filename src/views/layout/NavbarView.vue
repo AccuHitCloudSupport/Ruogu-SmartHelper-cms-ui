@@ -6,17 +6,14 @@
       <li class="nav-item"><router-link to="/dataMangent" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/gridicons.svg"> 資料處理</router-link></li>
     </ul>
     <div class="chat-container" :class="{ 'chat-container-expanded': chatExpanded }">
+      <iframe v-if="chatExpanded" :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
       <div class="chat-header">
-        <!-- 移除close按鈕和圖片 -->
-        <!-- 展開/收起 按鈕移到左邊 -->
-        <button v-if="!chatExpanded" @click="toggleDialogSize" class="toggle-dialog-button">
-          <img class="me-1 node-icon" src="../../assets/img/hello.png" style="width: 37px; height: 37px; filter: invert(100%);">
-        </button>
-        <button v-else @click="toggleDialogSize" class="toggle-dialog-button">
-          <img class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
+        <!-- 展開/收起 按鈕移到右下角 -->
+        <button @click="toggleDialogSize" class="toggle-dialog-button">
+          <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
+          <img v-else class="me-1 node-icon" src="../../assets/img/hello.png" style="width: 37px; height: 37px; filter: invert(100%);">
         </button>
       </div>
-      <iframe v-if="chatExpanded" :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
   </div>
 </template>
@@ -73,9 +70,8 @@ export default {
 
 /* 收縮時隱藏內容 */
 .chat-container:not(.chat-container-expanded) {
-  right: -100%; /* 隱藏在視窗右側 */
-  bottom: -100%; /* 隱藏在視窗底部 */
-  height: auto; /* 顯示內容 */
+  right: -347px; /* 或其他您覺得合適的值，以隱藏在視窗外 */
+  bottom: -517px; /* 或其他您覺得合適的值，以隱藏在視窗外 */
 }
 
 /* 表頭樣式 */
@@ -97,8 +93,8 @@ export default {
 /* 開關按鈕 */
 .toggle-dialog-button {
   position: absolute;
-  top: 0;
-  left: 0; /* 調整 left 屬性 */
+  bottom: 10px; /* 調整 bottom 屬性 */
+  right: 10px; /* 調整 right 屬性 */
   padding: 5px 10px;
   cursor: pointer;
   background-color: transparent;
