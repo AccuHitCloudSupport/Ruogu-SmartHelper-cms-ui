@@ -4,15 +4,8 @@
       <!-- 其他項目 -->
       <li class="nav-item"><router-link to="/permission" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/shield.svg"> 權限管理</router-link></li>
       <li class="nav-item"><router-link to="/dataMangent" class="nav-link" href="#"><img class="me-1 node-icon" src="../../assets/img/gridicons.svg"> 資料處理</router-link></li>
-      <!-- 打開聊天按鈕 -->
-      <li class="nav-item">
-        <button @click="toggleChat" :class="{ 'chat-toggle-btn-active': showChat }" class="nav-link">
-          <img class="me-1 node-icon" src="../../assets/img/cha-bubbles-two-svgrepo-com.svg" style="width: 15px; height: 15px;">
-          對話測試
-        </button>
-      </li>
     </ul>
-    <div v-if="showChat" class="chat-container" :class="{ 'chat-container-expanded': chatExpanded }">
+    <div class="chat-container" :class="{ 'chat-container-expanded': chatExpanded }">
       <div class="chat-header">
         <!-- 移除close按鈕和圖片 -->
         <!-- 展開/收起 按鈕移到左邊 -->
@@ -31,7 +24,6 @@ export default {
   name: 'NavbarView',
   data() {
     return {
-      showChat: false,
       chatExpanded: true
     };
   },
@@ -42,9 +34,6 @@ export default {
     }
   },
   methods: {
-    toggleChat() {
-      this.showChat = !this.showChat;
-    },
     toggleDialogSize() {
       this.chatExpanded = !this.chatExpanded;
     }
@@ -64,21 +53,6 @@ export default {
 
 .node-icon {
   margin-right: 1em;
-}
-
-/* 打開聊天按鈕的樣式 */
-.chat-toggle-btn {
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  display: flex;
-  align-items: center;
-}
-
-.chat-toggle-btn-active {
-  background-color: #FFDCB9; /* 變色效果，可根據需求修改 */
-  color: #fff;
-  border: none;
 }
 
 /* 聊天視窗的樣式 */
