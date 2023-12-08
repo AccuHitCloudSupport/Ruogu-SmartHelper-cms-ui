@@ -11,7 +11,7 @@
         <!-- 展開/收起 按鈕移到左邊 -->
         <button @click="toggleDialogSize" class="toggle-dialog-button">
           <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
-          <img v-else class="me-1 node-icon" src="../../assets/img/chat.png" style="width: 30px; height: 30px; filter: invert(100%);">
+          <img v-else class="me-1 node-icon" src="../../assets/img/chat.png" style="width: 35px; height: 35px; filter: invert(0%);">
         </button>
       </div>
       <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
@@ -71,7 +71,7 @@ export default {
 
 /* 收縮時隱藏內容 */
 .chat-container:not(.chat-container-expanded) {
-  right: -370px; /* 或其他您覺得合適的值，以隱藏在視窗外 */
+  right: -360px; /* 或其他您覺得合適的值，以隱藏在視窗外 */
   bottom: -520px; /* 或其他您覺得合適的值，以隱藏在視窗外 */
 }
 
