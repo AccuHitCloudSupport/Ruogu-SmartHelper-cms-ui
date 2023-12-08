@@ -11,10 +11,10 @@
         <!-- 展開/收起 按鈕移到左邊 -->
         <button @click="toggleDialogSize" class="toggle-dialog-button">
           <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
-          <img v-else class="me-1 node-icon" src="../../assets/img/hello.png" style="width: 37px; height: 37px; filter: invert(100%); margin-top: -60px;">
+          <img v-else class="me-1 node-icon" src="" style="width: 37px; height: 37px; filter: invert(100%);">
         </button>
       </div>
-      <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
+      <iframe v-if="chatExpanded" :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
     </div>
   </div>
 </template>
