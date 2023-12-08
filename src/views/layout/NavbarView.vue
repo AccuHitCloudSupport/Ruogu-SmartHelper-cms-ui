@@ -11,7 +11,7 @@
         <!-- 展開/收起 按鈕移到左邊 -->
         <button @click="toggleDialogSize" class="toggle-dialog-button">
           <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
-          <img v-else class="me-1 node-icon" src="../../assets/img/chat.png" style="width: 35px; height: 35px; filter: invert(100%);">
+          <img v-else class="me-1 node-icon" src="../../assets/img/chat.png" style="width: 37px; height: 37px; filter: invert(100%);">
         </button>
       </div>
       <iframe :src="chatSrc" style='min-width: 400px; width: 100%; min-height: 500px;' class="orange-background"></iframe>
@@ -71,13 +71,13 @@ export default {
 
 /* 收縮時隱藏內容 */
 .chat-container:not(.chat-container-expanded) {
-  right: -330px; /* 或其他您覺得合適的值，以隱藏在視窗外 */
-  bottom: -520px; /* 或其他您覺得合適的值，以隱藏在視窗外 */
+  right: -340px; /* 或其他您覺得合適的值，以隱藏在視窗外 */
+  bottom: -510px; /* 或其他您覺得合適的值，以隱藏在視窗外 */
 }
 
 /* 表頭樣式 */
 .chat-header {
-  background-color: #FF9224; /* 橘色背景 */
+  background-color: #0080FF; /* 橘色背景 */
   opacity: 1; /* 透明度 100% */
   height: 45px; /* 調整表頭高度 */
   margin-bottom: 10px; /* 新增這行，給表頭留出一些空間 */
