@@ -12,12 +12,14 @@
         </button>
       </li>
     </ul>
-    <div v-if="showChat" class="chat-container" :style="{ height: chatExpanded ? 'auto' : '45px' }">
+    <div v-if="showChat" class="chat-container" :class="{ 'chat-container-expanded': chatExpanded }">
       <div class="chat-header">
-        <!-- 移除close按鈕和圖片 -->
-        <!-- 展開/收起 按鈕移到左邊 -->
+        <button @click="toggleChat" class="close-chat">
+          <img class="me-1 node-icon" src="../../assets/img/close.png" style="width: 15px; height: 15px;">
+        </button>
+        <!-- 展開/收起 按鈕 -->
         <button @click="toggleDialogSize" class="toggle-dialog-button">
-          <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/down.png" style="width: 15px; height: 15px; filter: invert(100%);">
+          <img v-if="chatExpanded" class="me-1 node-icon" src="../../assets/img/up.png" style="width: 15px; height: 15px; filter: invert(100%);">
           <img v-else class="me-1 node-icon" src="../../assets/img/up.png" style="width: 15px; height: 15px; filter: invert(100%);">
         </button>
       </div>
@@ -91,6 +93,13 @@ export default {
   z-index: 999;
   padding: 0;
   border-radius: 10px; /* 添加圓角，與表頭相同 */
+  overflow: hidden; /* 隱藏內容溢出部分 */
+  transition: right 0.3s; /* 添加過渡效果 */
+}
+
+/* 收縮時隱藏內容 */
+.chat-container:not(.chat-container-expanded) {
+  right: -200px; /* 或其他您覺得合適的值，以隱藏在視窗外 */
 }
 
 /* 表頭樣式 */
@@ -106,14 +115,22 @@ export default {
 
 /* 關閉按鈕的樣式 */
 .close-chat {
-  /* 移除或留空 */
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  z-index: 1000; /* 將 z-index 設定為更高的值，確保在最上層 */
+  color: white;
 }
 
 /* 開關按鈕 */
 .toggle-dialog-button {
   position: absolute;
   top: 0;
-  left: 0; /* 調整 left 屬性 */
+  right: 25px;
   padding: 5px 10px;
   cursor: pointer;
   background-color: transparent;
