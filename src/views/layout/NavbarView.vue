@@ -71,18 +71,19 @@ export default {
 
 /* 收縮時隱藏內容 */
 .chat-container:not(.chat-container-expanded) {
-  right: -347px; /* 或其他您覺得合適的值，以隱藏在視窗外 */
-  bottom: -517px; /* 或其他您覺得合適的值，以隱藏在視窗外 */
+  right: -100%; /* 隱藏在視窗右側 */
+  bottom: -100%; /* 隱藏在視窗底部 */
+  height: auto; /* 顯示內容 */
 }
 
 /* 表頭樣式 */
 .chat-header {
-  background-color: #0072E3; 
+  background-color: #0080FF; 
   opacity: 1; /* 透明度 100% */
   height: 50px; /* 調整表頭高度 */
   margin-bottom: 10px; /* 新增這行，給表頭留出一些空間 */
   border-radius: 10px 10px 0 0; /* 添加圓角，使整個表頭上方兩邊為圓角 */
-  border-bottom: 5px solid #0072E3 !important; /* 使用 !important 強制生效 */
+  border-bottom: 5px solid #0080FF !important; /* 使用 !important 強制生效 */
   position: relative; /* 相對定位，以便絕對定位的按鈕參照 */
 }
 
