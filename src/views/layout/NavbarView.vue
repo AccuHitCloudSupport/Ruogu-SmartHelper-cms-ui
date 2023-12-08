@@ -24,7 +24,7 @@ export default {
   name: 'NavbarView',
   data() {
     return {
-      chatExpanded: true
+      chatExpanded: false // 修改這裡，預設為收起狀態
     };
   },
   computed: {
