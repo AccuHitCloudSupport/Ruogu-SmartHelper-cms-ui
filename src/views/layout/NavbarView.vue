@@ -30,7 +30,7 @@ export default {
   computed: {
     chatSrc() {
       // 使用環境變數
-      return `https://webchat.botframework.com/embed/testing-smarthelper-chatbot-bot?s=${process.env.VUE_APP_BOT_TOKEN}`;
+      return process.env.BOT_FRAMEWORK_URL;
     }
   },
   methods: {
