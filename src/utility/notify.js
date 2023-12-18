@@ -4,7 +4,7 @@ import 'vue-toast-notification/dist/theme-sugar.css';
 const $toast = useToast({
     position: 'top-right',
     dismissible: true,
-    duration: 20000,
+    duration: 200000,
     queue:true
 });
 
