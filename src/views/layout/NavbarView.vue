@@ -32,7 +32,7 @@ export default {
       // 使用環境變數
       process.env.VUE_APP_BOT_FRAMEWORK_URL;
     }
-  },
+  }, 
   methods: {
     toggleDialogSize() {
       this.chatExpanded = !this.chatExpanded;
