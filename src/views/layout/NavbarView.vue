@@ -30,7 +30,7 @@ export default {
   computed: {
     chatSrc() {
       // 使用環境變數
-      return process.env.BOT_FRAMEWORK_URL;
+      process.env.VUE_APP_BOT_FRAMEWORK_URL;
     }
   },
   methods: {
