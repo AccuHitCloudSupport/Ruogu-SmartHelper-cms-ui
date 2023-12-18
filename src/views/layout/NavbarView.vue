@@ -28,11 +28,11 @@ export default {
     };
   },
   computed: {
-    chatSrc() {
-      // 使用環境變數
-      process.env.VUE_APP_BOT_FRAMEWORK_URL;
-    }
-  }, 
+  chatSrc() {
+    // 使用環境變數
+    return process.env.VUE_APP_BOT_FRAMEWORK_URL;
+  }
+},
   methods: {
     toggleDialogSize() {
       this.chatExpanded = !this.chatExpanded;
