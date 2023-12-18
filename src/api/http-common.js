@@ -2,7 +2,7 @@ import router from "@/router";
 import axios from "axios";
 import Notify from "../utility/notify.js";
 
-axios.defaults.timeout = 5000;
+axios.defaults.timeout = 200000;
 axios.defaults.baseURL = process.env.VUE_APP_API_ROOT;
 // axios.defaults.baseURL = "https://shawn-cms-test-api.azurewebsites.net";
 // // http request 欄截
