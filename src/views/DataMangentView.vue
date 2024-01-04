@@ -173,7 +173,7 @@
           </div>
           <div class="my-3">
             <p class="mb-2">注意事項</p>
-            <p>1.上傳檔案格式請用PDF、DOC、ODT、DOCX。</p>
+            <p>1.上傳檔案格式請用PDF、DOC、ODT、DOCX、TXT。</p>
             <p>2.單次上傳數量上限為20筆。</p>
             <p>3.單次上傳檔案大小上限為50MB</p>
           </div>
