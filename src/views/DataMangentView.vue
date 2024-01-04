@@ -167,7 +167,7 @@
             <div class="border" :class="{
               isDragActive,
             }">
-              <input v-bind="getInputProps()" accept=".pdf,.doc,.dot,.docx" />
+              <input v-bind="getInputProps()" accept=".pdf,.doc,.dot,.docx,.txt" />
               <p class="text-center"><img src="../../src/assets/img/upload.svg"><br>將檔案拖曳至此或點擊區塊上傳</p>
             </div>
           </div>
