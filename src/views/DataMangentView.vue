@@ -320,7 +320,8 @@ export default {
       let fileName = "";
       if (acceptFiles.length <= 20) {
         acceptFiles.forEach((element, index) => {
-          if (element.type === 'application/pdf' || element.type === 'application/msword' || element.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || element.type === 'application/vnd.oasis.opendocument.text') {
+          if (element.type === 'application/pdf' || element.type === 'application/msword' || element.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || element.type === 'application/vnd.oasis.opendocument.text' ||
+  element.type === 'text/plain') {
             nowSize = element.size + nowSize;
             state.files.push(element)
             if (index + 1 === acceptFiles.length) {
