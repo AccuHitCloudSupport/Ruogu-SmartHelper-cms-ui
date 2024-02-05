@@ -6,7 +6,7 @@
         <div class="col-lg-12">
           <div class="form-inner">
             <div>
-              <img src="../assets/img/logo.png" alt="logo">
+              <img src="../assets/img/logo2.png" alt="logo">
             </div>
             <h2 class="h2">Welcome!</h2>
             <p>Sign Into Your Account</p>
