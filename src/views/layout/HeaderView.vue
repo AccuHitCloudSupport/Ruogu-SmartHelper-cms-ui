@@ -3,7 +3,7 @@
         <div class="navbar-collapse">
             <div class="d-flex align-items-center justify-content-between">
                 <div class="navbar-logo">
-                    <img src="../../assets/img/LOGO.png" width="113" alt="logo">
+                    <img src="../../assets/img/LOGO.png" alt="logo" style="margin-top: 5px; width: 210px; height: auto">
                 </div>
 
                 <ul class="d-flex align-items-center">
