@@ -32,6 +32,9 @@ jobs:
           api_location: "" # Api source code path - optional
           output_location: "" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
+        env:
+           VUE_APP_API_ROOT: "https://ruogu-smarthelper-cms-api.azurewebsites.net/"
+           VUE_APP_BOT_FRAMEWORK_URL: "https://unitedstates.webchat.botframework.com/embed/Ruogu-SmartHelper-bot-bot?s=bP31mqXEr3o.IIsdXSpuCe1sevOozOT76cdpru_NbnZLoQCg1PMLjDc"
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
