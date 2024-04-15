@@ -34,7 +34,7 @@ jobs:
           ###### End of Repository/Build Configurations ######
         env:
            VUE_APP_API_ROOT: "https://ruogu-smarthelper-cms-api.azurewebsites.net/"
-           VUE_APP_BOT_FRAMEWORK_URL: "https://unitedstates.webchat.botframework.com/embed/Ruogu-SmartHelper-bot-bot?s=bP31mqXEr3o.IIsdXSpuCe1sevOozOT76cdpru_NbnZLoQCg1PMLjDc"
+           VUE_APP_BOT_FRAMEWORK_URL: "https://webchat.botframework.com/embed/Ruogu-SmartHelper-bot-bot2?s=x2Rlcqr58eE.YWjf_0I6rwV_NqZO6S8ncSc6lvM8_LcSE4UhZK1B2b4"
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
